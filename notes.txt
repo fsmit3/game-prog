@@ -1,0 +1,37 @@
+Game:
+interface online
+berekeningen in python
+
+
+Setting:
+je bent een politieke familie. Je bezit 1% van de macht. De resterende macht is verdeeld over andere families.
+Deze families hebben wensen, en per beurt kun je 1 van die wensen in vervulling laten gaan, mits je dit kunt betalen.
+Het in vervulling laten gaan van wensen versterkt de relatie tussen jou en de familie, en het niet doen heeft een tegenovergesteld effect.
+Een relatie kan zodanig versterkt worden dat een familie zich onvoorwaardelijk bij jou aansluit, wat betekent a) dat ze geen wensenpakket meer aan je melden (dus niet meer aan tafel zitten) en b) in principe achter elke beslissing staan die je maakt. Maar als je teveel keer iets beslist wat slecht is voor hun groep, dan onderscheiden ze zich van jou en komen ze weer aan tafel. 
+Elke familie heeft een emotionele staat, naarmate deze slechter is (bozer) zijn ze meer geneigd om hogere (duurdere) eisen te stellen. Dit geldt ook naarmate ze meer macht hebben.
+Een familie kan ook omgekocht worden (door een bedrag te betalen per jaar), ze sluiten zich dan ook bij je aan. Echter vragen ze het jaar daarop weer geld, wat afhankelijk van de emotionele staat ook meer kan zijn. Als je niet aan deze eis kan voldoen dan staan ze niet meer achter je.
+Elke beslissing die je maakt is voor een aantal families heel gunstig, voor een aantal families OK, en voor een aantal families verschrikkelijk. De mensen uit de verliezende families kunnen beslissen om over te lopen naar de winnende families met een kans gebaseerd op de onderliggende machtsverhouding (i.e. de kans is heel klein dat er mensen overlopen van een hele machtige familie naar een onmachtige familie).
+Aan het einde van de beurt (dag of week etc) moet 50% van de bevolking (macht) achter jou staan. Dit is inclusief de hoeveel % van de mensen die onvoorwaardelijk achter je stonden. Als dit niet het geval is aan het einde van de dag, dan begint de revolutie met een van kans afhankelijke periode. Binnen deze periode moet de speler weer minstens 50% achter zich krijgen anders wordt hij afgezet. Hij heeft dus een beperkt aantal beurten om genoeg mensen weer tevreden te maken. In een periode van revolutie zijn de eisen fors.
+Geld komt binnen door middel van belasting, en moeten we nog even verder bedenken.
+
+- landschap kan op 2 manieren veranderen, enerzijds dat de emotionele staat van de groepen kunnen veranderen en dat de onderliggende machtsverhoudingen tussen groepen kunnen veranderen. Die verander je (als speler) dus doelbewust.
+- Om ervoor te zorgen dat je onvoorwaardelijke achterban achter je blijft staan moet je een model maken (in je hoofd) van welke standpunten deze groepen belangrijk vinden. 
+- Belangen zijn gediscrediseerd in de volgende facetten:
+	- milieu
+	- economie
+	- educatie
+	- sociale gelijkheid
+	- prestige
+	- wetenschap
+	- …
+
+- elke groep vindt bepaalde dingen belangrijk en onbelangrijk. Elke regel verbeterd op een aantal punten en verslechterd op een aantal punten.
+
+
+Ideeen:
+je wordt elk jaar ouder, en kan met 67 met pensioen. Als je het tot die tijd vol houdt krijg je een bonus op je highscore.
+Splitsing van werk geld en persoonlijk salaris. Persoonlijk salaris is afhankelijk van je macht (highscore is gebaseerd op hoeveelheid persoonlijk salaris).
+
+Plan:
+
+Goal:
