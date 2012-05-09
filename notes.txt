@@ -35,3 +35,23 @@ Splitsing van werk geld en persoonlijk salaris. Persoonlijk salaris is afhankeli
 Plan:
 
 Goal:
+
+Game dynamics:
+- elke state is een object
+- elke state heeft een lijst van transities naar betere en slechtere states
+- een energie functie bepaalt naar welke states je gaat (dit wordt een ingewikkelde functie)
+
+Characters:
+- character rate (decay)
+- goals (geprioriseerd)
+
+Update functie:
+- update rate (geduldig character)
+- gewogen som van alle update betreffende de topics, bestaande uit
+	- veranderingswaarde van die topic
+	- gecombineerd met de betrokkenheid van de agent (uit goals)
+- een willekeurig element (voor latere levels)
+
+in makkelijkere levels is het spel zo deterministisch mogelijk en hebben groepen met name oog voor 1 onderweg (sterkere differentiaties tussen goals).
+
+Je hebt een goal tree, elke goal heeft een waarde en afhankelijk van zijn macht en in welke state hij zit bepaald of hij die goal vraagt.
