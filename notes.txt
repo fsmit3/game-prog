@@ -50,8 +50,25 @@ Update functie:
 - gewogen som van alle update betreffende de topics, bestaande uit
 	- veranderingswaarde van die topic
 	- gecombineerd met de betrokkenheid van de agent (uit goals)
-- een willekeurig element (voor latere levels)
+?- een willekeurig element (voor latere levels)
+We nemen ook het verschil in kernwaarderealisatie laten meewegen. Dus als je wilt dat economie veel verbeterd en de genomen maatregel het maar matig verbeterd dan ben je minder blij dan andersom.
 
 in makkelijkere levels is het spel zo deterministisch mogelijk en hebben groepen met name oog voor 1 onderweg (sterkere differentiaties tussen goals).
 
 Je hebt een goal tree, elke goal heeft een waarde en afhankelijk van zijn macht en in welke state hij zit bepaald of hij die goal vraagt.
+
+Update functie nieuw:
+- update rate
+- gewogen som van veranderingen in realisatie van kernwaarde
+- gewogen som van het verschil in veranderingen in realisatie van kernwaarde ten opzichte van je eigen wens (met een factor?)
+
+Goal nodes:
+elke goal node heeft per kernwaarde kosten en opbrengsten. De kosten van een node, is de som van bij elke kernwaarde het verschil tussen de kosten en de huidige situatie gecombineerd met de mate van samenhorigheid op die kernwaarde. Machtige partijen tellen meer. 
+
+De hoeveelheid te besteden kosten is afhankelijk van je emotionele state
+
+Nieuwe oplossingen:
+goal trees blijven bestaan ongeacht een actie al is uitgevoerd. Maar je kiest altijd een zo'n hoog mogelijke node die je kan veroorloven. Dat betekent dat als een andere agent het getal van de kernwaarde enorm verlaagd, dat je dus weer lagere subnodes moet vragen. 
+
+De nodes zijn geen goal states maar maatregelen die je herhaaldelijk zou kunnen doen.
+
