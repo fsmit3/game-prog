@@ -17,4 +17,16 @@ function Agent(){
     this.updateEnergy(delta);
     return this.getState().transition(this.getEnergy());
   }
+
+  this.getDesire = function(){
+
+  }
+
+  this.evaluate = function(action){
+
+  }
+  
+  this.approveDesire = function(actions){
+    return actions[0];
+  }
 }

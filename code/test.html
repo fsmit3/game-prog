@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unit tests</title>
+  <script src="EmotionState.js"></script>
+  <script src="UnitTest.js"></script>
+</head>
+<body>
+<script>
+var unit = new UnitTest();
+unit.addTestUnit("EmotionState:TestTransitions",(new EmotionState()).testTransitions);
+unit.test();
+</script>
+</body>
+</html>
