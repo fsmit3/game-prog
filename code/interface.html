@@ -17,30 +17,79 @@
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		
-		<script language="JavaScript">
-			function askUserInput() {
+		<script>
+		    function start() {
+		    	// test json object with agents, actions and consequences
+		    	var agents = [ {"agentName" : "business-man", "action" : "This is a test", "consequence" : 
+			    		{ "environment" : "+1", "economy" : "-2" } }, 
+			    		{"agentName" : "student", "action" : "This is a test 2", "consequence" : 
+			    		{ "environment" : "+10", "economy" : "-2" } }
+		    		]
+		    		
+		        // get the reference for the body
+		        var mybody = document.getElementsByTagName("body")[0];
 				
+		        // creates <table> and <tbody> elements
+		        mytable     = document.createElement("table");
+		        mytablebody = document.createElement("tbody");
+		
+				for(var j = 0; j < agents.length; j++) {
+					
+					row = document.createElement("tr");
+					row.setAttribute("id", "agent"+j);
+					
+					cell1 = document.createElement("td");
+					text1 =  document.createTextNode(agents[j]["agentName"]);
+					cell1.appendChild(text1);
+					
+					row.appendChild(cell1);
+					
+					cell2 = document.createElement("td");
+					text2 =  document.createTextNode(agents[j]["action"]);
+					cell2.appendChild(text2);
+					
+					row.appendChild(cell2);
+					
+					cell3 = document.createElement("td");
+					text3 =  document.createTextNode("Environment: " + agents[j]["consequence"]["environment"] 
+						+ "," + " Economy: " + agents[j]["consequence"]["economy"]);
+					cell3.appendChild(text3);
+					
+					row.appendChild(cell3);
+					
+					cell4 = document.createElement("td");
+					
+					var buttonnode = document.createElement('input');
+					buttonnode.setAttribute('type','button');
+					buttonnode.setAttribute('name','sal');
+					buttonnode.setAttribute('value','Approve request');
+					
+					buttonnode.onclick = returnAction;
+					
+					cell4.appendChild(buttonnode);
+					
+					row.appendChild(cell4);
+					
+					mytablebody.appendChild(row);
+					
+				}
+		
+		        // appends <tbody> into <table>
+		        mytable.appendChild(mytablebody);
+		        // appends <table> into <body>
+		        mybody.appendChild(mytable);
+		        // sets the border attribute of mytable to 2;
+		        mytable.setAttribute("border","2");
+		        // creating all cells
+			}
+			function returnAction(display) {
+				alert(display);
 			}
 			
 		</script>
-		
+
 	</head>
-
-	<body>
-		<div>
-			<header>
-				<h1>HTML</h1>
-			</header>
-
-			<div id="game-screen">
-				
-			</div>
-
-			<footer>
-				<p>
-					&copy; Copyright  by Frank Smit
-				</p>
-			</footer>
-		</div>
+	<body onload="start()">
+		
 	</body>
 </html>
