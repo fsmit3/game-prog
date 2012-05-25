@@ -7,7 +7,7 @@ function GameController(){
   // Game State
   var _state;
   this.setState = function(state){ _state = state; };
-  this.getState = function(){ return _state; }
+  this.getState = function(){ return _state; };
 
   this.registerAgent = function(agent){
     _agents[_agents.length] = agent;
