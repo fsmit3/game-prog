@@ -21,7 +21,7 @@ function ActionNode(description, effects, parentNode){
   this.getEffects = function(){ return _effects; };
   this.setEffects = function(effects){ _effects = effects; };
 
-  this.addChildNode = function(node)
+  this.addChildNode = function(node){
     _childs[_childs.length] = node;
     node.setParent(this);
   }
