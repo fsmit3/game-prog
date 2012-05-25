@@ -1,9 +1,10 @@
-function ActionNode(description, score, parentNode){
+function ActionNode(description, effects, parentNode){
 
   var _description = "";
-  var _score = 0;
   var _parent = null;
   var _childs = [];
+
+  var _effects = effects;
 
   this.getDescription = function(){ return _description; };
   this.setDescription = function(desc){ _description = desc; };
@@ -16,6 +17,9 @@ function ActionNode(description, score, parentNode){
 
   this.getChilds = function(){ return _childs; };
   this.setChilds = function(childs){ _childs = childs; };
+
+  this.getEffects = function(){ return _effects; };
+  this.setEffects = function(effects){ _effects = effects; };
 
   this.addChildNode = function(node)
     _childs[_childs.length] = node;

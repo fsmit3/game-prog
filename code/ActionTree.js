@@ -4,11 +4,11 @@ function ActionTree(){
   this.getRoot = function(){ return _root; };
 
   this.init = function(){
-    _root = new ActionNode("Root",100);
-    var node_1 = new ActionNode("Food", 30, _root);
-    var node_11 = new ActionNode("Create more farm land", 0, _root);
-    var node_2 = new ActionNode("Safety", 20);
-    var node_21 = new ActionNode("Create more guard towers", 0, node2);
+    _root = new ActionNode("Root",{});
+    var node_1 = new ActionNode("Food", {}, _root);
+    var node_11 = new ActionNode("Create more farm land", {}, _root);
+    var node_2 = new ActionNode("Safety", {}, root);
+    var node_21 = new ActionNode("Create more guard towers", {}, node2);
   }
 
   this.findHighestPossibleNode = function(value){
