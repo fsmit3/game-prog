@@ -35,10 +35,14 @@ function GameController(){
     for(var i = 0; i < _agents.length; i++){
       _agents[i].evaluate(action);
     }
-    this.round();
+    this.inform();
   }
 
   this.execute = function(action){
+    for(var key in action){
+      if( key in world ){
+        world[key] += action[key];
+      }
+    }
   }
-
 }
