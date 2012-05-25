@@ -5,17 +5,20 @@ function GameController(){
   var _hos;
 
   // World
-  var world = {
+  var _world = new GameState({
     "food": 5,
     "safety": 5
-  }
+  })
+  this.getWorld = function(){ return _world; };
 
   this.registerAgent = function(agent){
     _agents[_agents.length] = agent;
+    agent.setGameController(this);
   };
 
   this.registerHeadOfState = function(agent){
     _hos = agent;
+    agent.setGameController(this);
   }
   this.getHOS = function(){ return _hos; };
 
@@ -31,18 +34,11 @@ function GameController(){
   }
 
   this.perform = function(action){
-    this.execute(action);
+    this.getWorld().updateValues(action.getEffects());
     for(var i = 0; i < _agents.length; i++){
       _agents[i].evaluate(action);
     }
     this.inform();
   }
 
-  this.execute = function(action){
-    for(var key in action){
-      if( key in world ){
-        world[key] += action[key];
-      }
-    }
-  }
 }

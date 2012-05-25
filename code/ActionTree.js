@@ -15,7 +15,6 @@ function ActionTree(){
     
   }
 
-  
   /**
    * findDepthFirst
    * f_test - function handle that returns either true or false
