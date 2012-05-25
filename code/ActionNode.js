@@ -1,6 +1,6 @@
 function ActionNode(description, effects, parentNode){
 
-  var _description = "";
+  var _description = description;
   var _parent = null;
   var _childs = [];
 
