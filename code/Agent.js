@@ -1,4 +1,9 @@
-function Agent(){
+function Agent(name, img){
+
+  var _name = name;
+  var _img = img;
+  this.getName = function(){ return _name; };
+  this.getImg = function(){ return _img; };
 
   // Signed integer
   var energy = 0;

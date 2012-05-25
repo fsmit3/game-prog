@@ -22,7 +22,10 @@ function GameController(){
   this.inform = function(){
     var desires = new Array();
     for(var i = 0; i < _agents.length; i++){
-      desires[desires.length] = _agents[i].getDesire();
+      desires[desires.length] = {
+        "agent": _agents[i],
+        "action": _agents[i].getDesire()
+      };
     }
     var action = this.getHOS().informDesires(desires);
   }
