@@ -4,6 +4,12 @@ function GameController(){
   // Head of State
   var _hos;
 
+  // World
+  var world = {
+    "food": 5,
+    "safety": 5
+  }
+
   this.registerAgent = function(agent){
     _agents[_agents.length] = agent;
   };
@@ -13,12 +19,15 @@ function GameController(){
   }
   this.getHOS = function(){ return _hos; };
 
-  this.round = function(){
+  this.inform = function(){
     var desires = new Array();
     for(var i = 0; i < _agents.length; i++){
       desires[desires.length] = _agents[i].getDesire();
     }
-    var action = this.getHOS().approveDesire(desires);
+    var action = this.getHOS().informDesires(desires);
+  }
+
+  this.perform = function(action){
     this.execute(action);
     for(var i = 0; i < _agents.length; i++){
       _agents[i].evaluate(action);
@@ -27,7 +36,6 @@ function GameController(){
   }
 
   this.execute = function(action){
-
   }
 
 }
