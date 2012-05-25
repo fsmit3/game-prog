@@ -32,7 +32,7 @@ function GameController(){
   }
 
   this.perform = function(action){
-    this.getWorld().updateValues(action.getEffects());
+    this.getState().updateValues(action.getEffects());
     for(var i = 0; i < _agents.length; i++){
       _agents[i].evaluate(action);
     }
