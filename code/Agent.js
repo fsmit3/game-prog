@@ -1,11 +1,11 @@
-function Agent(name, img){
+function Agent(name, img, action_tree){
 
   var _name = name;
   var _img = img;
   this.getName = function(){ return _name; };
   this.getImg = function(){ return _img; };
 
-  var _action_tree;
+  var _action_tree = action_tree;
   this.setActionTree = function(tree){ _action_tree = tree; };
   this.getActionTree = function(){ return _action_tree; };
 
