@@ -31,7 +31,7 @@
 		    				
 			}
 
-		    function requestApproval(request) {	
+		    function requestApproval(gamecontroller, request) {	
 		        // get the reference for the body
 		        var mybody = document.getElementsByTagName("body")[0];
 				
@@ -47,20 +47,26 @@
 					row.setAttribute("id", "agent"+j);
 					
 					cell1 = document.createElement("td");
-					text1 =  document.createTextNode(request[j]["agentName"]);
+					text1 =  document.createTextNode(request[j].agent.getName());
 					cell1.appendChild(text1);
 					
 					row.appendChild(cell1);
 					
 					cell2 = document.createElement("td");
-					text2 =  document.createTextNode(request[j]["action"]);
+					text2 =  document.createTextNode(request[j].action.getDescription());
 					cell2.appendChild(text2);
 					
 					row.appendChild(cell2);
 					
 					cell3 = document.createElement("td");
-					text3 =  document.createTextNode("Environment: " + request[j]["consequence"]["environment"] 
-						+ "," + " Economy: " + request[j]["consequence"]["economy"]);
+					consequenceText = "";
+					
+					for(var key in request[j].action.getEffects()) {
+						consequenceText += key + " " + request[j].action.getEffects().key + ', ';
+					}
+					//text3 =  document.createTextNode("Environment: " + request[j]["consequence"]["environment"] 
+					//	+ "," + " Economy: " + request[j]["consequence"]["economy"]);
+					text3 = document.createTextNode(consequenceText);
 					cell3.appendChild(text3);
 					
 					row.appendChild(cell3);
@@ -69,11 +75,10 @@
 					
 					var buttonnode = document.createElement('input');
 					buttonnode.setAttribute('type','button');
-					buttonnode.setAttribute('name','sal');
 					buttonnode.setAttribute('value','Approve request');
 					
 					buttonnode.onclick = (function(k){ return function(){
-						alert(k); }
+						gamecontroller.perform(request[k]) }
 					})(j);
 					
 					cell4.appendChild(buttonnode);
