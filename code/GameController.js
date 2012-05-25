@@ -4,12 +4,10 @@ function GameController(){
   // Head of State
   var _hos;
 
-  // World
-  var _world = new GameState({
-    "food": 5,
-    "safety": 5
-  })
-  this.getWorld = function(){ return _world; };
+  // Game State
+  var _state;
+  this.setState = function(state){ _state = state; };
+  this.getState = function(){ return _state; }
 
   this.registerAgent = function(agent){
     _agents[_agents.length] = agent;
