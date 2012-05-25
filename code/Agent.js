@@ -45,8 +45,4 @@ function Agent(name, img, action_tree){
     }
     this.updateEmotion(change);
   }
-  
-  this.approveDesire = function(actions){
-    return actions[0];
-  }
 }
