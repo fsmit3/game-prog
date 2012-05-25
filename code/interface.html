@@ -20,15 +20,16 @@
 		
 		<script src="Agent.js"></script>
 		<script src="GameController.js"></script>
+		<script src="GameState.js"></script>
 		<script src="ActionNode.js"></script>
 		
 		<script>
 			function start() {
 				var gamecontroller = new GameController();
 				
-				var _agents = new Array(2);
-				var _actions = new Array(2);
-				var request = new Array(2);
+				var _agents = new Array();
+				var _actions = new Array();
+				var request = new Array();
 				
 				agent1 = new Agent('Piet', 'bla');
 				_agents.push(agent1);
@@ -40,9 +41,7 @@
 				
 				action2 = new ActionNode("I want a sandwidch", {"food": 1, "safety": 5 }, undefined);
 				_actions.push(action2);
-				
-				document.write(_agents);
-				
+
 				for(var i = 0; i < _agents.length; i++) {
 					request.push({
 		        			"agent": _agents[i],
@@ -50,9 +49,7 @@
       					}
       				);
 				};
-			
-				document.write(JSON.stringify(request));
-		    	
+						    	
 		    	// call requestApproval which creates the interface
 		    	requestApproval(gamecontroller, request)
 		    				
@@ -89,7 +86,7 @@
 					consequenceText = "";
 					
 					for(var key in request[j].action.getEffects()) {
-						consequenceText += key + " " + request[j].action.getEffects().key + ', ';
+						consequenceText += key + " " + request[j].action.getEffects()[key] + ', ';
 					}
 					//text3 =  document.createTextNode("Environment: " + request[j]["consequence"]["environment"] 
 					//	+ "," + " Economy: " + request[j]["consequence"]["economy"]);
@@ -105,7 +102,7 @@
 					buttonnode.setAttribute('value','Approve request');
 					
 					buttonnode.onclick = (function(k){ return function(){
-						gamecontroller.perform(request[k]) }
+						gamecontroller.perform(request[k].action) }
 					})(j);
 					
 					cell4.appendChild(buttonnode);
