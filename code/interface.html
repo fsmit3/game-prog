@@ -9,7 +9,7 @@
 
 		<title>HTML</title>
 		<meta name="description" content="" />
-		<meta name="author" content="Frank Smit" />
+		<meta name="author" content="Sander Latour and Frank Smit" />
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 
@@ -18,41 +18,55 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		
 		<script>
-		    function start() {
-		    	// test json object with agents, actions and consequences
+			function start() {
+				// test json object with agents, actions and consequences
 		    	var agents = [ {"agentName" : "business-man", "action" : "This is a test", "consequence" : 
 			    		{ "environment" : "+1", "economy" : "-2" } }, 
 			    		{"agentName" : "student", "action" : "This is a test 2", "consequence" : 
 			    		{ "environment" : "+10", "economy" : "-2" } }
-		    		]
-		    		
+		    	]
+		    	
+		    	// call requestApproval which creates the interface
+		    	requestApproval(agents)
+		    				
+			}
+
+		    function requestApproval(gamecontroller, request) {	
 		        // get the reference for the body
 		        var mybody = document.getElementsByTagName("body")[0];
 				
 		        // creates <table> and <tbody> elements
 		        mytable     = document.createElement("table");
 		        mytablebody = document.createElement("tbody");
-		
-				for(var j = 0; j < agents.length; j++) {
+		        
+				for(var j = 0; j < request.length; j++) {
 					
 					row = document.createElement("tr");
+					row.setAttribute("height", "128px");
+					
 					row.setAttribute("id", "agent"+j);
 					
 					cell1 = document.createElement("td");
-					text1 =  document.createTextNode(agents[j]["agentName"]);
+					text1 =  document.createTextNode(request[j].agent.getName());
 					cell1.appendChild(text1);
 					
 					row.appendChild(cell1);
 					
 					cell2 = document.createElement("td");
-					text2 =  document.createTextNode(agents[j]["action"]);
+					text2 =  document.createTextNode(request[j].action.getDescription());
 					cell2.appendChild(text2);
 					
 					row.appendChild(cell2);
 					
 					cell3 = document.createElement("td");
-					text3 =  document.createTextNode("Environment: " + agents[j]["consequence"]["environment"] 
-						+ "," + " Economy: " + agents[j]["consequence"]["economy"]);
+					consequenceText = "";
+					
+					for(var key in request[j].action.getEffects()) {
+						consequenceText += key + " " + request[j].action.getEffects().key + ', ';
+					}
+					//text3 =  document.createTextNode("Environment: " + request[j]["consequence"]["environment"] 
+					//	+ "," + " Economy: " + request[j]["consequence"]["economy"]);
+					text3 = document.createTextNode(consequenceText);
 					cell3.appendChild(text3);
 					
 					row.appendChild(cell3);
@@ -61,10 +75,11 @@
 					
 					var buttonnode = document.createElement('input');
 					buttonnode.setAttribute('type','button');
-					buttonnode.setAttribute('name','sal');
 					buttonnode.setAttribute('value','Approve request');
 					
-					buttonnode.onclick = returnAction;
+					buttonnode.onclick = (function(k){ return function(){
+						gamecontroller.perform(request[k]) }
+					})(j);
 					
 					cell4.appendChild(buttonnode);
 					
@@ -79,13 +94,9 @@
 		        // appends <table> into <body>
 		        mybody.appendChild(mytable);
 		        // sets the border attribute of mytable to 2;
-		        mytable.setAttribute("border","2");
+		        mytable.setAttribute("border","1");
 		        // creating all cells
-			}
-			function returnAction(display) {
-				alert(display);
-			}
-			
+			}			
 		</script>
 
 	</head>
