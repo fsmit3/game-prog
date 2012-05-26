@@ -1,4 +1,4 @@
-function Agent(name, img, action_tree){
+function Agent(name, img, action_tree, emotion_state){
 
   var _name = name;
   var _img = img;
@@ -19,7 +19,7 @@ function Agent(name, img, action_tree){
   var energy = 0;
 
   // Emotional state
-  var state;
+  var state = emotion_state;
 
   this.getEnergy = function(){ return energy; }
   this.getState = function(){ return state; };

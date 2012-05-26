@@ -56,7 +56,7 @@ function EmotionState(){
     _stateKeys = stateKeys;
   }
 
-  this.testTransitions = function(){
+  this.initStates = function(){
     var state0 = new EmotionState();
     var state1 = new EmotionState();
     var state2 = new EmotionState();
@@ -82,7 +82,11 @@ function EmotionState(){
     state3.addState(state1, 0);
     state3.addState(state0, -20);
 
-    var state = state0;
+    return state0;
+  }
+
+  this.testTransitions = function(){
+    var state = this.initStates();
 
     for( var t = -20; t < 50; t += 10){
       state = state.transition(t);
