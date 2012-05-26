@@ -5,6 +5,9 @@ function ActionNode(description, effects, parentNode){
   var _childs = [];
 
   var _effects = effects;
+  
+  var _score = 0;
+  for(var key in effects){ _score += effects[key]; }
 
   this.getDescription = function(){ return _description; };
   this.setDescription = function(desc){ _description = desc; };

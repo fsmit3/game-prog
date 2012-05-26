@@ -13,6 +13,7 @@ function GameController(){
     _agents[_agents.length] = agent;
     agent.setGameController(this);
   };
+  this.getAgents = function(){ return _agents; }
 
   this.registerHeadOfState = function(agent){
     _hos = agent;

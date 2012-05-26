@@ -41,7 +41,7 @@ function Agent(name, img, action_tree, emotion_state){
     var effects = action.getEffects();
     var change = 0;
     for( var key in effects ){
-      change += effects;
+      change += effects[key];
     }
     this.updateEmotion(change);
   }
