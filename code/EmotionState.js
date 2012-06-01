@@ -1,10 +1,13 @@
-function EmotionState(){
+function EmotionState(label){
   // Hash-table of references to other states
   // Keys are state thresholds: minimal energy required to
   // make the transition to that state.
   // This threshold is considered to be unique.
   var _states = {}
   var _stateKeys = [];
+
+  var _label = (label != undefined ? label : "");
+  this.getLabel = function(){ return _label; };
 
   this.addState = function(stateRef, stateThreshold){
     this.removeState(stateRef);
@@ -57,14 +60,14 @@ function EmotionState(){
   }
 
   this.initStates = function(){
-    var state0 = new EmotionState();
-    var state1 = new EmotionState();
-    var state2 = new EmotionState();
-    var state3 = new EmotionState();
+    var state0 = new EmotionState("Angry");
+    var state1 = new EmotionState("Neutral");
+    var state2 = new EmotionState("Happy");
+    var state3 = new EmotionState("Excited");
     
     state0.addState(state3, 40);
     state0.addState(state2, 20);
-    state0.addState(state1, 00);
+    state0.addState(state1, 0);
     state0.addState(state0, -20);
 
     state1.addState(state3, 40);
@@ -82,7 +85,7 @@ function EmotionState(){
     state3.addState(state1, 0);
     state3.addState(state0, -20);
 
-    return state0;
+    return state1;
   }
 
   this.testTransitions = function(){
