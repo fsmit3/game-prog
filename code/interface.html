@@ -12,15 +12,10 @@
 		<meta name="description" content="" />
 		<meta name="author" content="Sander Latour and Frank Smit" />
 
-		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
-
-		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="stylesheet" href="style.css" />
 
-	  	<script src="inheritance.js"></script>
-    	<script src="Queue.js"></script>
+    <script src="inheritance.js"></script>
+    <script src="Queue.js"></script>
 		<script src="Game.js"></script>
 		<script src="GameController.js"></script>
 		<script src="GameState.js"></script>
@@ -40,6 +35,9 @@
         // get the reference for the body
         //var mybody = document.getElementsByTagName("body")[0];
         var divgame = document.getElementById("game-view");
+        while(divgame.firstChild){
+          divgame.removeChild(divgame.firstChild);
+        }
     
         // creates <table> and <tbody> elements
         mytable     = document.createElement("table");

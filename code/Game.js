@@ -12,7 +12,6 @@ function Game(){
     var actionTree = new ActionTree();
     actionTree.init();
     
-<<<<<<< HEAD
     _controller.registerAgent(
       new Agent(
         "Red Team",
