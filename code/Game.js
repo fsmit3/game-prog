@@ -10,9 +10,9 @@ function Game(){
     var actionTree = new ActionTree();
     actionTree.init();
     
-    var red_team = new Agent("Red Team", "", actionTree);
+    var red_team = new Agent("Red Team", "business-man.png", actionTree);
     _controller.registerAgent(red_team);
-    var blue_team = new Agent("Blue Team", "", actionTree);
+    var blue_team = new Agent("Blue Team", "business-woman.png", actionTree);
     _controller.registerAgent(blue_team);
    
     var king = new HumanAgent("King", "", actionTree);

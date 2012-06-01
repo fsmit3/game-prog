@@ -1,3 +1,13 @@
 body {
 	background:#ffffff
 }
+
+#game-view {
+	background:#C8C8C8;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	width: 700px ;
+  	margin-left: auto ;
+  	margin-right: auto ;
+  	text-align:center;
+}
