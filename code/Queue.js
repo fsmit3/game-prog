@@ -4,10 +4,21 @@ function Queue(){
   this.isEmpty = function(){ return (_queue == null); };
 
   this.push = function(elem){
-    _queue = {
-      "next": _queue,
-      "elem": elem
-    };
+    if( !this.isEmpty() ){
+      var last = _queue;
+      while(last.next != null){
+        last = last.next;
+      }
+      last.next = {
+        "next": null,
+        "elem": elem
+      };
+    }else{
+      _queue = {
+        "next": null,
+        "elem": elem
+      };
+    }
   }
 
   this.pushAll = function(list){
