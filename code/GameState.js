@@ -9,4 +9,9 @@ function GameState(values){
       }
     }
   }
+
+  this.getValue = function(key){
+    if(key in _values) return _values[key];
+    else return 0;
+  }
 }

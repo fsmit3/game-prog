@@ -12,13 +12,35 @@ function Game(){
     var actionTree = new ActionTree();
     actionTree.init();
     
-    var red_team = new Agent("Red Team", "", actionTree, emotion);
-    _controller.registerAgent(red_team);
-    var blue_team = new Agent("Blue Team", "", actionTree, emotion);
-    _controller.registerAgent(blue_team);
+    _controller.registerAgent(
+      new Agent(
+        "Red Team",         // Name
+        "",                 // Image
+        actionTree,         // ActionTree
+        {                   // Preferences
+          "food": 1,         
+          "safety": 0
+        },
+        emotion             // First emotional state
+      )
+    );
+    
+    _controller.registerAgent(
+      new Agent(
+        "Blue Team",        // Name
+        "",                 // Image
+        actionTree,         // ActionTree
+        {                   // Preferences
+          "food": 0,
+          "safety": 1
+        },
+        emotion             // First emotional state
+      )
+    );
    
-    var king = new HumanAgent("King", "", actionTree, emotion);
-    _controller.registerHeadOfState(king);
+    _controller.registerHeadOfState(
+      new HumanAgent("King", "")
+    );
 
     _controller.inform();
   }

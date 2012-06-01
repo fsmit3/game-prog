@@ -1,4 +1,4 @@
-function Agent(name, img, action_tree, emotion_state){
+function Agent(name, img, action_tree, preferences, emotion_state){
 
   var _name = name;
   var _img = img;
@@ -15,6 +15,9 @@ function Agent(name, img, action_tree, emotion_state){
     _game_controller = controller;
   }
 
+  var _preferences = preferences;
+  this.getPreferences = function(){ return _preferences; };
+
   // Signed integer
   var energy = 0;
 
@@ -22,7 +25,7 @@ function Agent(name, img, action_tree, emotion_state){
   var state = emotion_state;
 
   this.getEnergy = function(){ return energy; }
-  this.getState = function(){ return state; };
+  this.getEmotion = function(){ return state; };
 
   this.updateEnergy = function(delta){
     energy += delta;
@@ -30,19 +33,19 @@ function Agent(name, img, action_tree, emotion_state){
 
   this.updateEmotion = function(delta){
     this.updateEnergy(delta);
-    return this.getState().transition(this.getEnergy());
+    return this.getEmotion().transition(this.getEnergy());
   }
 
-  this.getDesire = function(){
-    return this.getActionTree().getRoot();
+  this.getDesire = function(state){
+    return this.getActionTree().findHighestPossibleNode(
+      this.getPreferences(), 
+      state
+    );
   }
 
   this.evaluate = function(action){
-    var effects = action.getEffects();
-    var change = 0;
-    for( var key in effects ){
-      change += effects[key];
-    }
-    this.updateEmotion(change);
+    this.updateEmotion(
+      action.getWeightedEffectScore(this.getPreferences())
+    );
   }
 }

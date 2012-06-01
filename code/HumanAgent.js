@@ -1,5 +1,5 @@
-function HumanAgent(name, img, action_tree, emotion_state){
-  var _self = inherit(this, new Agent(name, img, action_tree, emotion_state));
+function HumanAgent(name, img){
+  var _self = inherit(this, new Agent(name, img));
   var _parent = _self._parent;
   
   this.informDesires = function(actions){

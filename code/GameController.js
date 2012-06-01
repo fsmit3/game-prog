@@ -26,7 +26,7 @@ function GameController(){
     for(var i = 0; i < _agents.length; i++){
       desires[desires.length] = {
         "agent": _agents[i],
-        "action": _agents[i].getDesire()
+        "action": _agents[i].getDesire(this.getState())
       };
     }
     var action = this.getHOS().informDesires(desires);
