@@ -51,11 +51,17 @@
 					
 					cell1 = document.createElement("td");
 					cell1.setAttribute('width', '100px');
-					//text1 =  document.createTextNode(request[j].agent.getName());
 					var oImg=document.createElement("img");
 					oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
 					oImg.setAttribute('alt', request[j].agent.getName());
 					cell1.appendChild(oImg);
+					text1 =  document.createTextNode(
+            request[j].agent.getEmotion().getLabel()+
+            " ("+
+            request[j].agent.getEnergy()+
+            ")"
+          );
+          cell1.appendChild(text1);
 					
 					row.appendChild(cell1);
 					

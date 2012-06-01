@@ -22,10 +22,11 @@ function Agent(name, img, action_tree, preferences, emotion_state){
   var energy = 0;
 
   // Emotional state
-  var state = emotion_state;
+  var _emotion = emotion_state;
 
   this.getEnergy = function(){ return energy; }
-  this.getEmotion = function(){ return state; };
+  this.getEmotion = function(){ return _emotion; };
+  this.setEmotion = function(emotion){ _emotion = emotion; };
 
   this.updateEnergy = function(delta){
     energy += delta;
@@ -33,7 +34,9 @@ function Agent(name, img, action_tree, preferences, emotion_state){
 
   this.updateEmotion = function(delta){
     this.updateEnergy(delta);
-    return this.getEmotion().transition(this.getEnergy());
+    this.setEmotion(
+      this.getEmotion().transition(this.getEnergy())
+    );
   }
 
   this.getDesire = function(state){
