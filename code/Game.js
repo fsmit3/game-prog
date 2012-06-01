@@ -12,29 +12,30 @@ function Game(){
     var actionTree = new ActionTree();
     actionTree.init();
     
+<<<<<<< HEAD
     _controller.registerAgent(
       new Agent(
-        "Red Team",         // Name
-        "",                 // Image
-        actionTree,         // ActionTree
-        {                   // Preferences
+        "Red Team",
+        "business-woman.png",
+        actionTree,
+        {
           "food": 1,         
           "safety": 0
         },
-        emotion             // First emotional state
+        emotion
       )
     );
     
     _controller.registerAgent(
       new Agent(
-        "Blue Team",        // Name
-        "",                 // Image
-        actionTree,         // ActionTree
-        {                   // Preferences
+        "Blue Team",
+        "business-man.png",
+        actionTree,
+        {
           "food": 0,
           "safety": 1
         },
-        emotion             // First emotional state
+        emotion
       )
     );
    
