@@ -1,7 +1,7 @@
 body {
 	background:#000
 }
-#game-view {
+/*#game-view {
 	background:#000 url('../images/default-screen.png') no-repeat right top;
 	width: 700px ;
 	height: 550px;
@@ -9,14 +9,23 @@ body {
   	margin-right: auto ;
   	padding-top:20px;
   	text-align:center;
-}
-/*
-#game-view {
-	background:#C8C8C8;
+}*/
+#game-content {
+	background:#B8B8B8;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
-	width: 700px ;
+	width: 740px;
+	height:520px;
   	margin-left: auto ;
   	margin-right: auto ;
   	text-align:center;
-}*/
+  	padding-top:20px;
+}
+#game-view {
+	background:#F8F8F8;
+	width: 700px;
+	height:500px;
+  	margin-left: auto ;
+  	margin-right: auto ;
+  	text-align:center;
+}
