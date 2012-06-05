@@ -46,15 +46,17 @@
 				  
 				  for(var j = 0; j < request.length; j++) {
 					  row = document.createElement("tr");
-					  row.setAttribute("height", "150px");
+					  row.setAttribute("height", "100px");
 					  
 					  row.setAttribute("id", "agent"+j);
 					  
 					  cell1 = document.createElement("td");
-					  cell1.setAttribute('width', '100px');
+					  cell1.setAttribute('width', '60px');
 					  var oImg=document.createElement("img");
 					  oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
 					  oImg.setAttribute('alt', request[j].agent.getName());
+					  oImg.setAttribute('width', '50px');
+					  oImg.setAttribute('heigth', '100px');
 					  cell1.appendChild(oImg);
 					  text1 =  document.createTextNode(
 						  request[j].agent.getEmotion().getLabel()+
@@ -69,6 +71,7 @@
 					  cell2 = document.createElement("td");
 					  text2 =  document.createTextNode(request[j].action.getDescription());
 					  cell2.appendChild(text2);
+					  cell2.setAttribute('width', '300px');
 					  
 					  row.appendChild(cell2);
 					  
@@ -80,6 +83,7 @@
 					  }
 					  text3 = document.createTextNode(consequenceText);
 					  cell3.appendChild(text3);
+					  cell3.setAttribute('width', '140px');
 					  
 					  row.appendChild(cell3);
 					  
@@ -88,12 +92,17 @@
 					  var buttonnode = document.createElement('input');
 					  buttonnode.setAttribute('type','button');
 					  buttonnode.setAttribute('value','Approve request');
+					  //buttonnode.style.backgroundImage = "url(../images/approve.png)";
+					  //buttonnode.setAttribute('source', '../images/approve.png');
+						//buttonnode.setAttribute("width","100");
+						//buttonnode.setAttribute("height","100");
 					  
 					  buttonnode.onclick = (function(k){ return function(){
 						  gamecontroller.perform(request[k].action) }
 					  })(j);
 					  
 					  cell4.appendChild(buttonnode);
+					  cell4.setAttribute('width', '150px');
 					  
 					  row.appendChild(cell4);
 					  
@@ -110,6 +119,7 @@
 			  // sets the border attribute of mytable to 2;
 			  mytable.setAttribute("border","0");
 			  mytable.setAttribute('align', 'center');
+			  mytable.setAttribute('width', '700px')
 			  // creating all cells
 			}
 			
@@ -139,10 +149,17 @@
 	<body onload="start()">
 		<div id="game-content">
 			<div id="game-view"></div>
-			<div id="buttons">
-				<img id=green src=../images/green.png width=20 height=20 style=position:absolute;z-index:1;>
-				<img id=white src=../images/white.png width=20 height=20 style=position:absolute;z-index:0;>
-
-		</div>
+			<div id=info>
+				<div id=game-info>
+					<p> Here comes some information about the game, maybe what level etc </p>
+				</div>
+				<div id=world-state>
+					<p> Here come information about the level of power you have etc</p>
+				</div>
+				<div id="buttons">
+					<img id=green src=../images/green.png width=20 height=20 style=position:absolute;z-index:1;>
+					<img id=white src=../images/white.png width=20 height=20 style=position:absolute;z-index:0;>
+				</div>
+			</div>
 	</body>
 </html>

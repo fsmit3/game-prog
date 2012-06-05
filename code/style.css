@@ -15,23 +15,56 @@ body {
 	-moz-border-radius: 15px;
 	border-radius: 15px;
 	width: 750px;
-	height:530px;
+	height:630px;
   	margin-left: auto ;
   	margin-right: auto ;
   	text-align:center;
   	padding-top:30px;
 }
 #game-view {
-	background:#F8F8F8;
+	background:#FFF;
 	width: 700px;
 	height:500px;
   	margin-left: auto ;
   	margin-right: auto ;
   	text-align:center;
+	border: solid;
 }
 #buttons {
-	height: auto;
+	height: 20px;
 	padding-top:5px;
-	padding-right: 50px;
 	text-align:right;
+	clear:both;
+	width: 680px;
+}
+
+#info {
+	background: #FFF;
+	margin-left: 22px; 
+	height: 90px;
+	width: 700px;
+	border-left: solid;
+	border-right: solid;
+	border-bottom: solid;
+
+}
+
+#game-info {
+	height: 85px;
+	width: 340px;
+	float:left;
+	text-align: center;
+	margin: 0px;
+	padding: 4px;
+	
+}
+
+#world-state {
+	height: 85px;
+	width: 340px;
+	float:right;
+	text-align: center;
+	margin: 0px;
+	padding: 4px;
+	border-left:solid;
 }
