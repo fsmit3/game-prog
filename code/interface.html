@@ -7,15 +7,15 @@
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-		<title>Politics Game</title>
+		<title>A game of politics</title>
 		
-		<meta name="description" content="" />
+		<meta name="description" content="Play the game" />
 		<meta name="author" content="Sander Latour and Frank Smit" />
 
 		<link rel="stylesheet" href="style.css" />
 
-    <script src="inheritance.js"></script>
-    <script src="Queue.js"></script>
+		<script src="inheritance.js"></script>
+		<script src="Queue.js"></script>
 		<script src="Game.js"></script>
 		<script src="GameController.js"></script>
 		<script src="GameState.js"></script>
@@ -27,96 +27,122 @@
 		
 		<script>
 			function start() {
+				flash_lights();
         		var game = new Game();
         		game.init();
 			}
 
-      function requestApproval(gamecontroller, request) {	
-        // get the reference for the body
-        //var mybody = document.getElementsByTagName("body")[0];
-        var divgame = document.getElementById("game-view");
-        while(divgame.firstChild){
-          divgame.removeChild(divgame.firstChild);
-        }
-    
-        // creates <table> and <tbody> elements
-        mytable     = document.createElement("table");
-        mytablebody = document.createElement("tbody");
-		        
-				for(var j = 0; j < request.length; j++) {
-					row = document.createElement("tr");
-					row.setAttribute("height", "150px");
-					
-					row.setAttribute("id", "agent"+j);
-					
-					cell1 = document.createElement("td");
-					cell1.setAttribute('width', '100px');
-					var oImg=document.createElement("img");
-					oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
-					oImg.setAttribute('alt', request[j].agent.getName());
-					cell1.appendChild(oImg);
-					text1 =  document.createTextNode(
-            request[j].agent.getEmotion().getLabel()+
-            " ("+
-            request[j].agent.getEnergy()+
-            ")"
-          );
-          cell1.appendChild(text1);
-					
-					row.appendChild(cell1);
-					
-					cell2 = document.createElement("td");
-					text2 =  document.createTextNode(request[j].action.getDescription());
-					cell2.appendChild(text2);
-					
-					row.appendChild(cell2);
-					
-					cell3 = document.createElement("td");
-					consequenceText = "";
-					
-					for(var key in request[j].action.getEffects()) {
-						consequenceText += key + " " + request[j].action.getEffects()[key] + ', ';
+		function requestApproval(gamecontroller, request) {	
+		  // get the reference for the body
+		  //var mybody = document.getElementsByTagName("body")[0];
+		  var divgame = document.getElementById("game-view");
+		  while(divgame.firstChild){
+			divgame.removeChild(divgame.firstChild);
+		  }
+	  
+		  // creates <table> and <tbody> elements
+		  mytable     = document.createElement("table");
+		  mytablebody = document.createElement("tbody");
+				  
+				  for(var j = 0; j < request.length; j++) {
+					  row = document.createElement("tr");
+					  row.setAttribute("height", "150px");
+					  
+					  row.setAttribute("id", "agent"+j);
+					  
+					  cell1 = document.createElement("td");
+					  cell1.setAttribute('width', '100px');
+					  var oImg=document.createElement("img");
+					  oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
+					  oImg.setAttribute('alt', request[j].agent.getName());
+					  cell1.appendChild(oImg);
+					  text1 =  document.createTextNode(
+						  request[j].agent.getEmotion().getLabel()+
+						  " ("+
+						  request[j].agent.getEnergy()+
+						  ")"
+					  );
+					  cell1.appendChild(text1);
+					  
+					  row.appendChild(cell1);
+					  
+					  cell2 = document.createElement("td");
+					  text2 =  document.createTextNode(request[j].action.getDescription());
+					  cell2.appendChild(text2);
+					  
+					  row.appendChild(cell2);
+					  
+					  cell3 = document.createElement("td");
+					  consequenceText = "";
+					  
+					  for(var key in request[j].action.getEffects()) {
+						  consequenceText += key + " " + request[j].action.getEffects()[key] + ', ';
+					  }
+					  text3 = document.createTextNode(consequenceText);
+					  cell3.appendChild(text3);
+					  
+					  row.appendChild(cell3);
+					  
+					  cell4 = document.createElement("td");
+					  
+					  var buttonnode = document.createElement('input');
+					  buttonnode.setAttribute('type','button');
+					  buttonnode.setAttribute('value','Approve request');
+					  
+					  buttonnode.onclick = (function(k){ return function(){
+						  gamecontroller.perform(request[k].action) }
+					  })(j);
+					  
+					  cell4.appendChild(buttonnode);
+					  
+					  row.appendChild(cell4);
+					  
+					  mytablebody.appendChild(row);
+					  
+				  }
+		  
+			  // appends <tbody> into <table>
+			  mytable.appendChild(mytablebody);
+			  // appends <table> into <body>
+			  divgame.appendChild(mytable);
+			  
+			  //mytable.setAttribute('id', 'game-view');
+			  // sets the border attribute of mytable to 2;
+			  mytable.setAttribute("border","0");
+			  mytable.setAttribute('align', 'center');
+			  // creating all cells
+			}
+			
+			function flash_lights () {
+				var colors = new Array ("green", "white");
+				
+				var rand_no = Math.random();
+				rand_no = parseInt (rand_no * colors.length);
+				color = colors[rand_no];
+				
+				for (var i=0; i<document.images.length;i++) {
+					document.images[i].style.visibility = "visible";
+					if(document.images[i].id == color) {
+						document.images[i].style.visibility = "hidden";
 					}
-					text3 = document.createTextNode(consequenceText);
-					cell3.appendChild(text3);
-					
-					row.appendChild(cell3);
-					
-					cell4 = document.createElement("td");
-					
-					var buttonnode = document.createElement('input');
-					buttonnode.setAttribute('type','button');
-					buttonnode.setAttribute('value','Approve request');
-					
-					buttonnode.onclick = (function(k){ return function(){
-						gamecontroller.perform(request[k].action) }
-					})(j);
-					
-					cell4.appendChild(buttonnode);
-					
-					row.appendChild(cell4);
-					
-					mytablebody.appendChild(row);
-					
 				}
-		
-	  	    // appends <tbody> into <table>
-	        mytable.appendChild(mytablebody);
-	        // appends <table> into <body>
-	        divgame.appendChild(mytable);
-	        
-	        //mytable.setAttribute('id', 'game-view');
-	        // sets the border attribute of mytable to 2;
-	        mytable.setAttribute("border","0");
-	        mytable.setAttribute('align', 'center');
-	        // creating all cells
-		  }			
+				
+				setTimeout('flash_lights()', 1000 );
+			}
+
+
+
+
 		</script>
 
 	</head>
 	<body onload="start()">
 		<div id="game-content">
 			<div id="game-view"></div>
+			<div id="buttons">
+				<img id=green src=../images/green.png width=20 height=20 style=position:absolute;z-index:1;>
+				<img id=white src=../images/white.png width=20 height=20 style=position:absolute;z-index:0;>
+
 		</div>
 	</body>
 </html>

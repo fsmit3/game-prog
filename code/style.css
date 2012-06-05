@@ -1,5 +1,5 @@
 body {
-	background:#000
+	background:#000 url('../images/background.png') repeat;
 }
 /*#game-view {
 	background:#000 url('../images/default-screen.png') no-repeat right top;
@@ -14,12 +14,12 @@ body {
 	background:#B8B8B8;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
-	width: 740px;
-	height:520px;
+	width: 750px;
+	height:530px;
   	margin-left: auto ;
   	margin-right: auto ;
   	text-align:center;
-  	padding-top:20px;
+  	padding-top:30px;
 }
 #game-view {
 	background:#F8F8F8;
@@ -28,4 +28,10 @@ body {
   	margin-left: auto ;
   	margin-right: auto ;
   	text-align:center;
+}
+#buttons {
+	height: auto;
+	padding-top:5px;
+	padding-right: 50px;
+	text-align:right;
 }
