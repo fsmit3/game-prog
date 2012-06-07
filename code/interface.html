@@ -28,17 +28,55 @@
 		<script>
 			function start() {
 				flash_lights();
+				var divgame = document.getElementById("game-view");
+				var buttonnode = document.createElement('input');
+				buttonnode.setAttribute('type','button');
+				buttonnode.setAttribute('value','New Game');
+				
+				buttonnode.onclick = function() {
+					explanationPage()
+				};
+				
+				divgame.appendChild(buttonnode);
+				
+			}
+			
+			function explanationPage() {
+				var divgame = document.getElementById("game-view");
+				cleanScreen(divgame);
+				var text = document.createTextNode('Here comes some explanation.');
+				divgame.appendChild(text);
+				
+				var buttonnode = document.createElement('input');
+				buttonnode.setAttribute('type','button');
+				buttonnode.setAttribute('value','Start the game');
+				
+				buttonnode.onclick = function() {
+					startNewGame()
+				};
+				divgame.appendChild(buttonnode);
+				
+			}
+			
+			function startNewGame() {
         		var game = new Game();
         		game.init();
+			}
+			
+			function cleanScreen(divgame) {
+				while(divgame.firstChild){
+					divgame.removeChild(divgame.firstChild);
+				}
 			}
 
 		function requestApproval(gamecontroller, request) {	
 		  // get the reference for the body
 		  //var mybody = document.getElementsByTagName("body")[0];
 		  var divgame = document.getElementById("game-view");
-		  while(divgame.firstChild){
-			divgame.removeChild(divgame.firstChild);
-		  }
+		  //while(divgame.firstChild){
+		//	divgame.removeChild(divgame.firstChild);
+		  //}
+		  cleanScreen(divgame);
 	  
 		  // creates <table> and <tbody> elements
 		  mytable     = document.createElement("table");
