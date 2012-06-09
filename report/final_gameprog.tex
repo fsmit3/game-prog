@@ -9,15 +9,14 @@
 \begin{document}
 \maketitle
 
-\begin{abstract}
-
-\end{abstract}
-
 \section{Introduction}
-Ever wanted to be the president of a country? The game; A game of politics, allows the gamer to crawl into the skin of a presidential character during the prehistoric era...
+Ever wanted to be the president of a country? The game; A game of politics, allows the gamer to crawl into the skin of a presidential character during the prehistoric era. Using a super computer, the gamer is able to control the leader of a country in making decisions. 
+
+In this work we will present the game;a game of politics. We mostly focus on the AI part of the game. Where the interface is less important. In the next sections we will first describe the game itself. Then we will talk about the AI of the game namely the agents, and how they are modeled. In section \ref{sec:hp} we will discuss the goals and actions of the human player. We will end this work with our conclusions and lessons that are learned from this experience. 
 
 \section{The game}
-The idea of the game is that during the prehistoric era you, as the gamer, are put forward as the leader of your country. To help you with making decisions which should improve the living conditions of your people, five members, each of one tribe, will motion to subjects they think are important. The way the gamer rules the country is up to the gamer. He, for example, could choose to rule in a democratic manner or choose to rule the country as a dictator. However, the goal of the game is to be a president until you retire, so as a gamer you would like the people of you country to support you.
+\label{sec:tg}
+The idea of the game is that during the prehistoric era you, as the gamer, can control a leader of a country. To help you with making decisions which should improve the living conditions of your people, five members, each of one tribe, will motion to subjects they think are important. The way the gamer rules the country is up to the gamer. He, for example, could choose to rule in a democratic manner or choose to rule the country as a dictator. However, the goal of the game is to be a president until you retire, so as a gamer you would like the people of you country to support you.
 
 So how does this work? First of all when the game starts the gamer posses 1\% of the power. The remaining power is divided over the different tribes, the bigger the tribe the more power it posses. In every round, the members propose to the gamer their wishes. If the gamer fulfills a wish of a tribe, the relationship between the gamer and that tribe will improve. This relationship could such enhance that the tribe decides to support you unconditionally. This means that they will not propose anymore wishes. This means that the gamer's power will increase with the amount of power the tribe had. At the end of every turn, the player should have 50 \% of the people (e.g. power) supporting him. If this is not the case, the game is finished. 
 
@@ -26,15 +25,38 @@ However there is a small catch, the relationship between the gamer and the tribe
 So back to the point made about the different forms of government, it is possible to be a dictator by getting more than 50 \% of the people to unconditionally support you. And you could have a democratic form by keeping the power divided between the different tribes.
 
 \section{Autonomous Agents}
-The tribes in the game are modeled ask AI agents, where they differ are only in their ideals and their level of patience (the more patient an agent is the more he will allow you to disobey his wishes). The agent have five levels of emotional states, which are connected in a linear fashion. These states are, ...... The way these agents are modeled and how actions are chosen will be explained in this section. 
-
-\subsection{Choosing Actions}
+\label{sec:aa}
+The tribes in the game are modeled ask AI agents, where they differ are only in their ideals and their level of patience (the more patient an agent is the more he will allow you to disobey his wishes). The agent have five levels of emotional states, which are connected in a linear fashion. The way these agents are modeled and how actions are chosen will be explained in this section. 
 
 \subsection{Emotional States}
+The five levels of emotion are, (1) neutral, (2) happy, (3) unconditionally supporting, (4) angry, (5) unwilling to support. These states are connected in a linear fashion, meaning that each state is at most connected to two other states, as shown in figure \ref{fig:states}. Each state can be activated given an certain amount of energy. So, for example, the happy state could be activated when the amount of energy is between 60 and 80, and state 3 is activated when the energy is between 80 and above. This means that when an agent is now in state 1 (e.g. neutral), he could go to state 2 given some amount of energy. However, when the agents has still enough energy left to also go to state 3 he will skip state 2 and immediately go to state 3. 
+
+The amount of energy an agents receives after each turn is determined by the function given by \ref{func:energy}. ....
+
+\begin{align}
+\label{func:energy}
+x
+\end{align}
+
+\subsection{Choosing Actions}
+Unlike in a FSM, the states do not directly influence the actions an agent takes. It influences more the interaction between the agent and the human player. So, how are the actions then chosen? For this we used the amount of energy and the ideals of an agent....
 
 \section{Human Player}
+\label{sec:hp}
+The objective of the human player is to rule as long as possible. This means that the human player has to keep 50 \% of the population to support him. If this is not the case after every round then the game is over. If the player completes a level, he will be rewarded with an high amount of experience points. 
+
+The actions that a human player could take are simple. The only thing he has to do is to approve one of the requests. However, to make it more exciting for the human player, when an agent unconditionally supports him, the agent does not request for things anymore. But the human player still needs to takes is ideals in consideration to keep him satisfied. So on a certain level, the human player needs to model the ideals of all the agents. As mentioned earlier, when the human player does not consider the ideals of the agents that supports him unconditionally, a revolution will break out and the human agent has just a short amount of time to fix everything before he loses the game, this will be more explained in the next section. 
+
+\section{Game situations}
+\label{sec:gs}
+
 
 \section{Conclusion}
+\label{sec:co}
+
+
+\section{Future work}
+\label{sec:fw}
 
 
 \end{document}
