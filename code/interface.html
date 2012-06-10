@@ -119,6 +119,12 @@
       divworld.innerHTML = world;
     }
 
+    function gameover(score){
+      var div = document.getElementById("game-info");
+      div.innerHTML = "<h2>Game over</h2>";
+      div.innerHTML += "<br /><br /><h3>Score: "+score+"</h3>";
+    }
+
 		function requestApproval(gamecontroller, request) {	
 		  // get the reference for the body
 		  //var mybody = document.getElementsByTagName("body")[0];

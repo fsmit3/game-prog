@@ -57,8 +57,18 @@ function GameController(){
     if(maxWin > 0 && maxLoss < 0){
       this.shiftPower(maxWinner, maxWin, maxLoser, maxLoss);
     }
-    this.getState().updateValues({"credits":1});
-    this.inform();
+    if(this.getSupport() > 60){
+      this.getState().updateValues({"credits":1});
+      _revolution = 0;
+    }else{
+      if(revolution == 0) alert('The people are restless, quickly solve their anger or the revolution will start!');
+      _revolution++;
+    }
+    if(_revolution > 3){
+      gameover(this.getState().getValue("credits"));
+    }else{
+      this.inform();
+    }
   }
 
   this.shiftPower = function(winner, deltaW, loser, deltaL){
