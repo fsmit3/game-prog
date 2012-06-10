@@ -69,11 +69,19 @@
 				}
 			}
 
+    function updateWorldState(gamecontroller, divworld){
+      var world = "Support: "+gamecontroller.getSupport();
+      var state = gamecontroller.getState().getRawState();
+      for(var topic in state){
+        world += "<br />"+topic+": "+state[topic];
+      }
+      divworld.innerHTML = world;
+    }
+
 		function requestApproval(gamecontroller, request) {	
 		  // get the reference for the body
 		  //var mybody = document.getElementsByTagName("body")[0];
-      var divworld = document.getElementById("world-state");
-      divworld.innerHTML = "Support: "+gamecontroller.getSupport();
+      updateWorldState(gamecontroller, document.getElementById("world-state"));
 		  var divgame = document.getElementById("game-view");
 		  //while(divgame.firstChild){
 		//	divgame.removeChild(divgame.firstChild);

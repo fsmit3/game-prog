@@ -35,6 +35,7 @@ function Agent(name, img, action_tree, preferences, emotion_state, energy, power
   this.updateEnergy = function(delta){
     energy += delta;
     energy = (energy<100?energy:100);
+    energy = (energy>0?energy:0);
   }
 
   this.updateEmotion = function(delta){

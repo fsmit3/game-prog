@@ -14,4 +14,6 @@ function GameState(values){
     if(key in _values) return _values[key];
     else return 0;
   }
+
+  this.getRawState = function(){ return _values; };
 }
