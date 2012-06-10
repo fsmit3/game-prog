@@ -150,6 +150,8 @@
 		  mytablebody.appendChild(row);
 				  
 				  for(var j = 0; j < request.length; j++) {
+					if(request[j].agent.getEnergy() < 80 ) {
+						
 					  row = document.createElement("tr");
 					  row.setAttribute("height", "100px");
 					  
@@ -214,6 +216,8 @@
 					  row.appendChild(cell4);
 					  
 					  mytablebody.appendChild(row);
+					  
+					}
 					  
 				  }
 		  
