@@ -6,7 +6,7 @@ function ActionTree(){
   this.init = function(){
     _root = new ActionNode("Root",{"food":1000, "safety":1000, "culture":1000}, {"food": 2, "safety": 3, "culture":5});
     // depth = 1
-    var node_11 = new ActionNode('Irrigate more farm land', {"food":1000, "safety":1000, "culture":1000}, {'food': 30, 'safety':-5, 'culture': -5}, _root);
+    var node_11 = new ActionNode('Irrigate more farm land', {"food":100, "safety":20, "culture":10}, {'food': 30, 'safety':-5, 'culture': -5}, _root);
     var node_12 = new ActionNode('Create more laws', {"food":1000, "safety":1000, "culture":1000}, {'food':0, 'safety':20, 'culture':0} , _root);
     var node_13 = new ActionNode('Build a concert hall', {"food":1000, "safety":1000, "culture":1000},  {'food':-12, 'safety':-15, 'culture':20} , _root);
     
