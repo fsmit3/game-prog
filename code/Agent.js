@@ -18,6 +18,8 @@ function Agent(name, img, action_tree, preferences, emotion_state, energy, power
   var _power = power;
   this.getPower = function(){ return _power; };
   this.setPower = function(power){ _power = power; };
+  this.increasePower = function(delta){ _power += delta; };
+  this.decreasePower = function(delta){ _power -= delta; };
 
   var _preferences = preferences;
   this.getPreferences = function(){ return _preferences; };
@@ -45,11 +47,15 @@ function Agent(name, img, action_tree, preferences, emotion_state, energy, power
     );
   }
 
+  var _expectedProgress = 0;
+
   this.getDesire = function(state){
-    return this.getActionTree().findHighestPossibleNode(
+    var action = this.getActionTree().findHighestPossibleNode(
       this.getPreferences(), 
       state
     );
+    _expectedProgress = action.getWeightedEffectScore(this.getPreferences());
+    return action;
   }
 
   this.getSupport = function(){
@@ -57,8 +63,9 @@ function Agent(name, img, action_tree, preferences, emotion_state, energy, power
   }
 
   this.evaluate = function(action){
-    this.updateEmotion(
-      action.getWeightedEffectScore(this.getPreferences())
-    );
+    var delta = action.getWeightedEffectScore(this.getPreferences());
+    delta -= 0.5*_expectedProgress;
+    this.updateEmotion(delta);
+    return delta;
   }
 }

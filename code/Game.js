@@ -22,7 +22,7 @@ function Game(){
           "safety": 0
         },
         emotion,
-        50,
+        70,
         50
       )
     );
@@ -37,7 +37,7 @@ function Game(){
           "safety": 1
         },
         emotion,
-        50,
+        70,
         50
       )
     );

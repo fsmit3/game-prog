@@ -110,7 +110,9 @@
 						  request[j].agent.getEmotion().getLabel()+
 						  " ("+
 						  request[j].agent.getEnergy()+
-						  ")"
+						  ") ["+
+              Math.floor(request[j].agent.getPower())+
+              "]"
 					  );
 					  cell1.appendChild(text1);
 					  
