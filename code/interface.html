@@ -120,9 +120,10 @@
     }
 
     function gameover(score){
-      var div = document.getElementById("game-info");
+      var div = document.getElementById("game-view");
       div.innerHTML = "<h2>Game over</h2>";
       div.innerHTML += "<br /><br /><h3>Score: "+score+"</h3>";
+      div.innerHTML += "<br /><br /><input type='button' onclick='startNewGame()' value='Start New Game' />"
     }
 
 		function requestApproval(gamecontroller, request) {	
@@ -156,7 +157,6 @@
 		  mytablebody.appendChild(row);
 				  
 				  for(var j = 0; j < request.length; j++) {
-					if(request[j].agent.getEnergy() < 80 ) {
 						
 					  row = document.createElement("tr");
 					  row.setAttribute("height", "100px");
@@ -165,26 +165,36 @@
 					  
 					  cell1 = document.createElement("td");
 					  cell1.setAttribute('width', '70px');
-					  var oImg=document.createElement("img");
-					  oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
-					  oImg.setAttribute('alt', request[j].agent.getName());
-					  oImg.setAttribute('width', '50px');
-					  oImg.setAttribute('heigth', '100px');
-					  cell1.appendChild(oImg);
-					  text1 =  document.createTextNode(
-						  request[j].agent.getEmotion().getLabel()+
-						  " ("+
-						  request[j].agent.getEnergy()+
-						  ") ["+
-              Math.floor(request[j].agent.getPower())+
-              "]"
-					  );
-					  cell1.appendChild(text1);
-					  
+            if(request[j].agent == gamecontroller.getHOS()){
+              text1 =  document.createTextNode(
+                "Me!"
+              );
+              cell1.appendChild(text1);
+            }else{
+              var oImg=document.createElement("img");
+              oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
+              oImg.setAttribute('alt', request[j].agent.getName());
+              oImg.setAttribute('width', '50px');
+              oImg.setAttribute('heigth', '100px');
+              cell1.appendChild(oImg);
+              text1 =  document.createTextNode(
+                request[j].agent.getEmotion().getLabel()+
+                " ("+
+                request[j].agent.getEnergy()+
+                ") ["+
+                Math.floor(request[j].agent.getPower())+
+                "]"
+              );
+              cell1.appendChild(text1);
+					  }
 					  row.appendChild(cell1);
 					  
 					  cell2 = document.createElement("td");
-					  text2 =  document.createTextNode(request[j].action.getDescription());
+					  if(request[j].agent.getEnergy() < 80 || request[j].agent == gamecontroller.getHOS()) {
+  					  text2 =  document.createTextNode(request[j].action.getDescription());
+            }else{
+  					  text2 =  document.createTextNode("I fully support your actions. (Just make sure you keep taking the right ones)");
+            }
 					  cell2.appendChild(text2);
 					  cell2.setAttribute('width', '300px');
 					  
@@ -222,8 +232,6 @@
 					  row.appendChild(cell4);
 					  
 					  mytablebody.appendChild(row);
-					  
-					}
 					  
 				  }
 		  

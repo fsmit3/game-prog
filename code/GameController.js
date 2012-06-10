@@ -1,6 +1,8 @@
 function GameController(){
   var _agents = new Array();
 
+  var _revolution = 0;
+
   // Head of State
   var _hos;
 
@@ -61,7 +63,7 @@ function GameController(){
       this.getState().updateValues({"credits":1});
       _revolution = 0;
     }else{
-      if(revolution == 0) alert('The people are restless, quickly solve their anger or the revolution will start!');
+      if(_revolution == 0) alert('The people are restless, quickly solve their anger or the revolution will start!');
       _revolution++;
     }
     if(_revolution > 3){
