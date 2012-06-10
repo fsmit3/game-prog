@@ -98,11 +98,11 @@
 			}
 
     function updateWorldState(gamecontroller, divworld){
-      var world = "Support: "+gamecontroller.getSupport();
+      var world = "";
       var state = gamecontroller.getState().getRawState();
       for(var topic in state){
         if(topic != "credits")
-          world += "<br />"+topic+": "+state[topic];
+          world += topic+": "+state[topic]+"<br />";
       }
       divworld.innerHTML = world;
     }
@@ -123,6 +123,7 @@
       }
       var game = "Turn: "+gamecontroller.getTurn();
       game += "<br />Credits: "+gamecontroller.getState().getValue("credits");
+      game += "<br />Support: "+Math.round(gamecontroller.getSupport());
       divgame.innerHTML = game;
     }
 
