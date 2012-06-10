@@ -54,7 +54,8 @@ function Agent(name, img, action_tree, preferences, emotion_state, energy, power
       this.getPreferences(), 
       state
     );
-    _expectedProgress = action.getWeightedEffectScore(this.getPreferences());
+    if(action)
+      _expectedProgress = action.getWeightedEffectScore(this.getPreferences());
     return action;
   }
 

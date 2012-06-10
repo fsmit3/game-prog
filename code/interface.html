@@ -189,7 +189,7 @@
               text1 =  document.createTextNode(
                 request[j].agent.getEmotion().getLabel()+
                 " ("+
-                request[j].agent.getEnergy()+
+                Math.floor(request[j].agent.getEnergy())+
                 ") ["+
                 Math.floor(request[j].agent.getPower())+
                 "]"
@@ -199,7 +199,9 @@
 					  row.appendChild(cell1);
 					  
 					  cell2 = document.createElement("td");
-					  if(request[j].agent.getEnergy() < 80 || request[j].agent == gamecontroller.getHOS()) {
+            if(request[j].action == null){
+              text2 =  document.createTextNode("I know nothing that you can do to make our relation better.");
+					  }else if(request[j].agent.getEnergy() < 80 || request[j].agent == gamecontroller.getHOS()) {
   					  text2 =  document.createTextNode(request[j].action.getDescription());
             }else{
   					  text2 =  document.createTextNode("I fully support your actions. (Just make sure you keep taking the right ones)");
@@ -210,32 +212,35 @@
 					  row.appendChild(cell2);
 					  
 					  cell3 = document.createElement("td");
-					  consequenceText = "";
-					  
-					  for(var key in request[j].action.getEffects()) {
-						  consequenceText += key + " " + request[j].action.getEffects()[key] + ', ';
-					  }
-					  text3 = document.createTextNode(consequenceText);
-					  cell3.appendChild(text3);
+            if(request[j].agent.getEnergy() < 80 && request[j].action != null){
+  					  consequenceText = "";
+  					  
+  					  for(var key in request[j].action.getEffects()) {
+  						  consequenceText += key + " " + request[j].action.getEffects()[key] + ', ';
+  					  }
+  					  text3 = document.createTextNode(consequenceText);
+  					  cell3.appendChild(text3);
+            }
 					  cell3.setAttribute('width', '140px');
 					  
 					  row.appendChild(cell3);
 					  
 					  cell4 = document.createElement("td");
-					  
-					  var buttonnode = document.createElement('input');
-					  buttonnode.setAttribute('type','button');
-					  buttonnode.setAttribute('value','Approve request');
-					  //buttonnode.style.backgroundImage = "url(../images/approve.png)";
-					  //buttonnode.setAttribute('source', '../images/approve.png');
-						//buttonnode.setAttribute("width","100");
-						//buttonnode.setAttribute("height","100");
-					  
-					  buttonnode.onclick = (function(k){ return function(){
-						  gamecontroller.perform(request[k].action) }
-					  })(j);
-					  
-					  cell4.appendChild(buttonnode);
+					  if(request[j].action != null && request[j].agent.getEnergy() < 80){
+  					  var buttonnode = document.createElement('input');
+  					  buttonnode.setAttribute('type','button');
+  					  buttonnode.setAttribute('value','Approve request');
+  					  //buttonnode.style.backgroundImage = "url(../images/approve.png)";
+  					  //buttonnode.setAttribute('source', '../images/approve.png');
+  						//buttonnode.setAttribute("width","100");
+  						//buttonnode.setAttribute("height","100");
+  					  
+  					  buttonnode.onclick = (function(k){ return function(){
+  						  gamecontroller.perform(request[k].action) }
+  					  })(j);
+  					  
+  					  cell4.appendChild(buttonnode);
+            }
 					  cell4.setAttribute('width', '150px');
 					  
 					  row.appendChild(cell4);
