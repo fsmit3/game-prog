@@ -99,6 +99,19 @@
 
     function updateWorldState(gamecontroller, divworld){
       var world = "Support: "+gamecontroller.getSupport();
+	  var audio1 = document.getElementById('gametune');
+	  var audio2 = document.getElementById('tensiontune');
+	  if(gamecontroller.getSupport() < 60) {
+		if (audio2.paused) {
+			audio1.pause();
+			playMp3('tensiontune');
+		}
+	  } else {
+		if (audio1.paused) {
+			audio2.pause();
+			playMp3('gametune');
+		}
+	  }
       var state = gamecontroller.getState().getRawState();
       for(var topic in state){
         world += "<br />"+topic+": "+state[topic];
