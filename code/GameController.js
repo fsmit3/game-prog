@@ -34,10 +34,35 @@ function GameController(){
 
   this.perform = function(action){
     this.getState().updateValues(action.getEffects());
+
+    var maxLoser;
+    var maxLoss = 0;
+    var maxWinner;
+    var maxWin = 0;
+    var delta = 0;
     for(var i = 0; i < _agents.length; i++){
-      _agents[i].evaluate(action);
+      delta = _agents[i].evaluate(action);
+      if(delta > 0 && delta > maxWin){
+        maxWinner = _agents[i];
+        maxWin = delta;
+      } else if(delta < 0 && delta < maxLoss){
+        maxLoser = _agents[i];
+        maxLoss = delta;
+      }
+    }
+    if(maxWin > 0 && maxLoss < 0){
+      this.shiftPower(maxWinner, maxWin, maxLoser, maxLoss);
     }
     this.inform();
+  }
+
+  this.shiftPower = function(winner, deltaW, loser, deltaL){
+    var p = (100 - Math.abs(winner.getPower() - loser.getPower()))/100;
+    var r = Math.random();
+    var f = 0.1;
+    var delta = p*f*r*Math.abs(deltaL - deltaW);
+    winner.increasePower(delta);
+    loser.decreasePower(delta);
   }
 
   this.getSupport = function(){
