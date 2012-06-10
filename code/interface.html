@@ -13,6 +13,8 @@
 		<meta name="author" content="Sander Latour and Frank Smit" />
 
 		<link rel="stylesheet" href="style.css" />
+		
+		<audio src="../sounds/heartbeat-04.mp3" id="heartbeat" preload="auto"></audio>
 
 		<script src="inheritance.js"></script>
 		<script src="Queue.js"></script>
@@ -28,6 +30,7 @@
 		<script>
 			function start() {
 				flash_lights();
+				playMp3('heartbeat')
 				var divgame = document.getElementById("game-view");
 				var divstate = document.getElementById("world-state");
 				
@@ -46,6 +49,10 @@
 				
 				divgame.setAttribute('style', 'background: url(../images/titlepage-scaled.png)')
 				
+			}
+			
+			function playMp3(id){
+				document.getElementById(id).play();
 			}
 			
 			function explanationPage() {
