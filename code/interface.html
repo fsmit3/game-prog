@@ -99,24 +99,31 @@
 
     function updateWorldState(gamecontroller, divworld){
       var world = "Support: "+gamecontroller.getSupport();
-	  var audio1 = document.getElementById('gametune');
-	  var audio2 = document.getElementById('tensiontune');
-	  if(gamecontroller.getSupport() < 60) {
-		if (audio2.paused) {
-			audio1.pause();
-			playMp3('tensiontune');
-		}
-	  } else {
-		if (audio1.paused) {
-			audio2.pause();
-			playMp3('gametune');
-		}
-	  }
       var state = gamecontroller.getState().getRawState();
       for(var topic in state){
-        world += "<br />"+topic+": "+state[topic];
+        if(topic != "credits")
+          world += "<br />"+topic+": "+state[topic];
       }
       divworld.innerHTML = world;
+    }
+
+    function updateGameState(gamecontroller, divgame){
+      var audio1 = document.getElementById('gametune');
+      var audio2 = document.getElementById('tensiontune');
+      if(gamecontroller.getSupport() < 60) {
+        if (audio2.paused) {
+          audio1.pause();
+          playMp3('tensiontune');
+        }
+      } else {
+        if (audio1.paused) {
+          audio2.pause();
+          playMp3('gametune');
+        }
+      }
+      var game = "Turn: "+gamecontroller.getTurn();
+      game += "<br />Credits: "+gamecontroller.getState().getValue("credits");
+      divgame.innerHTML = game;
     }
 
     function gameover(score){
@@ -130,6 +137,7 @@
 		  // get the reference for the body
 		  //var mybody = document.getElementsByTagName("body")[0];
       updateWorldState(gamecontroller, document.getElementById("world-state"));
+      updateGameState(gamecontroller, document.getElementById("game-info"));
 		  var divgame = document.getElementById("game-view");
 		  //while(divgame.firstChild){
 		//	divgame.removeChild(divgame.firstChild);

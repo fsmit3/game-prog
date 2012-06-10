@@ -1,10 +1,13 @@
 function GameController(){
   var _agents = new Array();
 
-  var _revolution = 0;
-
   // Head of State
   var _hos;
+  
+  var _revolution = 0;
+  var _turn = 1;
+  this.getTurn = function(){ return _turn; };
+  this.incrementTurn = function(){ _turn++; };
 
   // Game State
   var _state;
@@ -68,7 +71,10 @@ function GameController(){
     }
     if(_revolution > 3){
       gameover(this.getState().getValue("credits"));
+    }else if(this.getTurn() == 65){
+      gameover(this.getState().getValue("credits"));
     }else{
+      this.incrementTurn();
       this.inform();
     }
   }
