@@ -20,11 +20,13 @@ function Game(){
         actionTree,
         {
           "food": 1,         
-          "safety": 0
+          "safety": 0,
+          "culture": 10
         },
         emotion,
         70,
-        50
+        50,
+        20
       )
     );
     
@@ -35,11 +37,13 @@ function Game(){
         actionTree,
         {
           "food": 0,
-          "safety": 1
+          "safety": 1,
+          "culture":0
         },
         emotion,
         70,
-        50
+        50,
+        100
       )
     );
    
