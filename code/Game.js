@@ -5,6 +5,7 @@ function Game(){
     _controller.setState(new GameState({
       "food" : 0,
       "safety": 0,
+      "credits":0,
       "culture":0
     }));
 
@@ -21,7 +22,6 @@ function Game(){
         {
           "food": 1,         
           "safety": 0,
-          "credits":0,
           "culture": 10
         },
         emotion,

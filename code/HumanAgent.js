@@ -8,6 +8,6 @@ function HumanAgent(name, img){
   }
 
   this.getDesire = function(state){
-    return new ActionNode("Pay your self a lot of money", {}, {"food":-10, "safety":-10, "credits":20});
+    return new ActionNode("Pay your self a lot of money", {}, {"credits":10});
   }
 }

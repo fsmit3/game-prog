@@ -150,7 +150,7 @@
 		  mytablebody.appendChild(row);
 				  
 				  for(var j = 0; j < request.length; j++) {
-					if(request[j].agent.getEnergy() < 80 ) {
+					if(request[j].agent.getEnergy() < 80 || request[j].agent == gamecontroller.getHOS()) {
 						
 					  row = document.createElement("tr");
 					  row.setAttribute("height", "100px");
@@ -159,21 +159,25 @@
 					  
 					  cell1 = document.createElement("td");
 					  cell1.setAttribute('width', '70px');
-					  var oImg=document.createElement("img");
-					  oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
-					  oImg.setAttribute('alt', request[j].agent.getName());
-					  oImg.setAttribute('width', '50px');
-					  oImg.setAttribute('heigth', '100px');
-					  cell1.appendChild(oImg);
-					  text1 =  document.createTextNode(
-						  request[j].agent.getEmotion().getLabel()+
-						  " ("+
-						  request[j].agent.getEnergy()+
-						  ") ["+
-              Math.floor(request[j].agent.getPower())+
-              "]"
-					  );
-					  cell1.appendChild(text1);
+            if(request[j].agent != gamecontroller.getHOS()){
+              if(request[j].agent.getImg() != ""){
+                var oImg=document.createElement("img");
+                oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
+                oImg.setAttribute('alt', request[j].agent.getName());
+                oImg.setAttribute('width', '50px');
+                oImg.setAttribute('heigth', '100px');
+                cell1.appendChild(oImg);
+              }
+              text1 =  document.createTextNode(
+                request[j].agent.getEmotion().getLabel()+
+                " ("+
+                request[j].agent.getEnergy()+
+                ") ["+
+                Math.floor(request[j].agent.getPower())+
+                "]"
+              );
+              cell1.appendChild(text1);
+            }
 					  
 					  row.appendChild(cell1);
 					  
