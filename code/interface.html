@@ -99,6 +99,19 @@
 
     function updateWorldState(gamecontroller, divworld){
       var world = "Support: "+gamecontroller.getSupport();
+	  var audio1 = document.getElementById('gametune');
+	  var audio2 = document.getElementById('tensiontune');
+	  if(gamecontroller.getSupport() < 60) {
+		if (audio2.paused) {
+			audio1.pause();
+			playMp3('tensiontune');
+		}
+	  } else {
+		if (audio1.paused) {
+			audio2.pause();
+			playMp3('gametune');
+		}
+	  }
       var state = gamecontroller.getState().getRawState();
       for(var topic in state){
         world += "<br />"+topic+": "+state[topic];
@@ -119,6 +132,22 @@
 		  // creates <table> and <tbody> elements
 		  mytable     = document.createElement("table");
 		  mytablebody = document.createElement("tbody");
+		  row = document.createElement("tr");
+		  cell1 = document.createElement("th");
+		  cell2 = document.createElement("th");
+		  cell3 = document.createElement("th");
+		  cell4 = document.createElement("th");
+		  
+		  cell1.innerHTML = 'Agent';
+		  cell2.innerHTML = 'Request';
+		  cell3.innerHTML = 'Consequence';
+		  cell4.innerHTML = 'Action';
+		  
+		  row.appendChild(cell1);
+		  row.appendChild(cell2);
+		  row.appendChild(cell3);
+		  row.appendChild(cell4);
+		  mytablebody.appendChild(row);
 				  
 				  for(var j = 0; j < request.length; j++) {
 					  row = document.createElement("tr");
@@ -127,7 +156,7 @@
 					  row.setAttribute("id", "agent"+j);
 					  
 					  cell1 = document.createElement("td");
-					  cell1.setAttribute('width', '60px');
+					  cell1.setAttribute('width', '70px');
 					  var oImg=document.createElement("img");
 					  oImg.setAttribute('src', '../images/'+request[j].agent.getImg());
 					  oImg.setAttribute('alt', request[j].agent.getName());
