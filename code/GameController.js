@@ -40,4 +40,12 @@ function GameController(){
     this.inform();
   }
 
+  this.getSupport = function(){
+    var support = 0;
+    for(var i = 0; i < _agents.length; i++){
+      support += _agents[i].getSupport();
+    }
+    return support;
+  }
+
 }

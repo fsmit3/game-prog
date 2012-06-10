@@ -1,4 +1,4 @@
-function Agent(name, img, action_tree, preferences, emotion_state){
+function Agent(name, img, action_tree, preferences, emotion_state, energy, power){
 
   var _name = name;
   var _img = img;
@@ -15,11 +15,15 @@ function Agent(name, img, action_tree, preferences, emotion_state){
     _game_controller = controller;
   }
 
+  var _power = power;
+  this.getPower = function(){ return _power; };
+  this.setPower = function(power){ _power = power; };
+
   var _preferences = preferences;
   this.getPreferences = function(){ return _preferences; };
 
   // Signed integer
-  var energy = 0;
+  var energy = energy;
 
   // Emotional state
   var _emotion = emotion_state;
@@ -30,6 +34,7 @@ function Agent(name, img, action_tree, preferences, emotion_state){
 
   this.updateEnergy = function(delta){
     energy += delta;
+    energy = (energy<100?energy:100);
   }
 
   this.updateEmotion = function(delta){
@@ -44,6 +49,10 @@ function Agent(name, img, action_tree, preferences, emotion_state){
       this.getPreferences(), 
       state
     );
+  }
+
+  this.getSupport = function(){
+    return this.getPower()*(this.getEnergy()/100);
   }
 
   this.evaluate = function(action){

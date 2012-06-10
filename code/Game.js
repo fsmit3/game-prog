@@ -21,7 +21,9 @@ function Game(){
           "food": 1,         
           "safety": 0
         },
-        emotion
+        emotion,
+        50,
+        50
       )
     );
     
@@ -34,7 +36,9 @@ function Game(){
           "food": 0,
           "safety": 1
         },
-        emotion
+        emotion,
+        50,
+        50
       )
     );
    
