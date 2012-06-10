@@ -1,35 +1,35 @@
 Food:
-Irrigate more farm land
-Build more farms
-Create more farm tools
-Build more granaries
-Build more markets
-Subsidise more farmers
-Improve farming technologies
-Train police officers to be farmers
-Transform iron tools to farm tools
+'Irrigate more farm land', {food: 30, safety:-5, culture: -5}
+'Build more farms', {food: 15, safety:-10, culture: -10}
+'Create more farm tools', {food: 10, safety:-5, culture: -5}
+'Build more granaries', {food: 20, safety:-5, culture: -10}
+'Build more markets', {food: 15, safety:-10, culture: -10}
+'Subsidize more farmers', {food: 5, safety:0, culture:0}
+'Improve farming technologies', {food: 7, safety:0, culture:0}
+'Train police officers to be farmers', {food: 10, safety:-20, culture: -5}
+'Transform iron tools to farm tools', {food: 13, safety:0, culture:0}
 
 Safety:
-Build more walls
-Build more police schools
-Hire more police trainers
-Create more weapons
-Create more barracks
-Create more laws
-Subsidise more police officers
-Train farmers to be police officers
-Transform iron tools to weapons
+'Build more walls', {food: -5, safety:14, culture: -10}
+'Build more police schools', {food:-6, safety:5, culture:-10}
+'Hire more police trainers', {food:-3, safety:5, culture:0}
+'Create more weapons', {food:0, safety:15, culture:0}
+'Create more barracks', {food:-7, safety:15, culture: -10}
+'Create more laws', {food:0, safety:20, culture:0}
+'Subsidize more police officers', {food: -2, safety:20, culture: -5}
+'Train farmers to be police officers', {food: 30, safety:-5, culture: -5}
+'Transform iron tools to weapons', {food:-2, safety:5, culture:0}
 
 Culture:
-Build more sculptures
-Build more art schools
-Hire more art teachers
-Build more art galaries
-Build more museums
-Subsides more artists
-Lower prices of canvas
-Spend more on architecture
-Build a concert hall
-Transform iron tools to music instruments
+'Build more sculptures', {food:-2, safety:0, culture:15}
+'Build more art schools', {food:-10, safety:-5, culture:20}
+'Hire more art teachers', {food:-10, safety:-10, culture:5}
+'Build more art galleries', {food:-10, safety:-10, culture:10}
+'Build more museums', {food:-10, safety:-10, culture:10}
+'Subsides more artists', {food:-2, safety:-2, culture:5}
+'Lower prices of canvas', {food:0, safety:0, culture:5}
+'Spend more on architecture', {food:-5, safety:-5, culture:10}
+'Build a concert hall', {food:-12, safety:-15, culture:20}
+'Transform iron tools to music instruments', {food:-2, safety:-2, culture:5}
 
 Health: (maybe?)
