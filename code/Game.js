@@ -3,10 +3,10 @@ function Game(){
 
   this.init = function(){
     _controller.setState(new GameState({
-      "food" : 0,
-      "safety": 0,
+      "food" : 10,
+      "safety": 10,
       "credits":0,
-      "culture":0
+      "culture":10
     }));
 
     var emotion = (new EmotionState()).initStates();
