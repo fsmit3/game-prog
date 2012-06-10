@@ -20,9 +20,9 @@ function Game(){
         "business-woman.png",
         actionTree,
         {
-          "food": 1,         
+          "food": 0.2,         
           "safety": 0,
-          "culture": 10
+          "culture": 0.8
         },
         emotion,
         70,
