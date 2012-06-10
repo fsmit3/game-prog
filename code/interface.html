@@ -29,23 +29,43 @@
 			function start() {
 				flash_lights();
 				var divgame = document.getElementById("game-view");
+				var divstate = document.getElementById("world-state");
+				
 				var buttonnode = document.createElement('input');
 				buttonnode.setAttribute('type','button');
 				buttonnode.setAttribute('value','New Game');
 				
 				buttonnode.onclick = function() {
-					explanationPage()
+					divgame.setAttribute('style', 'background: #FFF');
+					cleanScreen(divstate);
+					explanationPage();
 				};
 				
-				divgame.appendChild(buttonnode);
+				cleanScreen(divstate);
+				divstate.appendChild(buttonnode);
+				
+				divgame.setAttribute('style', 'background: url(../images/titlepage-scaled.png)')
 				
 			}
 			
 			function explanationPage() {
 				var divgame = document.getElementById("game-view");
-				cleanScreen(divgame);
-				var text = document.createTextNode('Here comes some explanation.');
-				divgame.appendChild(text);
+				var explanation = '<h1> Explanation </h1> <h2> The game </h2>' +
+				'You are a scientist in the year 2050 and you invented a super computer which enables you to control the mind of a leader in the prehistoric era. ' +
+				'Your task is to make decisions which yield to better living conditions for your people. To help you with making decisions, a number of ' +
+				'groups will ask you to make different decisions. In every turn you need to approve one of those requests. ' +
+				'<h2> Objectives </h2> Each approval has a number of consequences to the different people of your country (positive or negative). This could lead to ' +
+				'people supporting you and people not supporting you. Every group of people represents an amount of power they posses. Your goal is to keep the leader on ' +
+				'his position as long as possible. This you can do by keeping, after every turn, 50% of all the people satisfied with your decisions. ' +
+				'<h2> Controls </h2> The only thing you have to do, is press one button each time to approve a request. Nothing more, nothing less. ' +
+				'<h2> The people </h2> The people could be extremely satisfied with the decisions you make and decide to unconditionally support you. ' +
+				'From that moment, they will not present you anymore their requests but give you all their power. To keep this power, you still need to satisfy ' +
+				'their beliefs. So if you still consider their wishes (without knowing them explicitly), they will keep supporting you and you will maintain their power, ' +
+				'else they will pull back their power and will again requests different things. ';
+				
+				divgame.innerHTML = explanation;
+				
+				var divstate = document.getElementById("world-state");
 				
 				var buttonnode = document.createElement('input');
 				buttonnode.setAttribute('type','button');
@@ -54,7 +74,7 @@
 				buttonnode.onclick = function() {
 					startNewGame()
 				};
-				divgame.appendChild(buttonnode);
+				divstate.appendChild(buttonnode);
 				
 			}
 			
@@ -200,12 +220,8 @@
 		<div id="game-content">
 			<div id="game-view"></div>
 			<div id=info>
-				<div id=game-info>
-					<p> Here comes some information about the game, maybe what level etc </p>
-				</div>
-				<div id=world-state>
-					<p> Here come information about the level of power you have etc</p>
-				</div>
+				<div id=game-info> </div>
+				<div id=world-state> </div>
 				<div id="buttons">
 					<img id=green src=../images/green.png width=20 height=20 style=position:absolute;z-index:1;>
 					<img id=white src=../images/white.png width=20 height=20 style=position:absolute;z-index:0;>
