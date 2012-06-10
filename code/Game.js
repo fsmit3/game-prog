@@ -3,9 +3,9 @@ function Game(){
 
   this.init = function(){
     _controller.setState(new GameState({
-      "food" : 0,
-      "safety": 0,
-      "culture":0
+      "food" : 10,
+      "safety": 5,
+      "culture":4
     }));
 
     var emotion = (new EmotionState()).initStates();
