@@ -29,6 +29,10 @@ function GameController(){
         "action": _agents[i].getDesire(this.getState())
       };
     }
+    desires[desires.length] = {
+      "agent": _hos,
+      "action": _hos.getDesire(this.getState())
+    };
     var action = this.getHOS().informDesires(desires);
   }
 
@@ -53,6 +57,7 @@ function GameController(){
     if(maxWin > 0 && maxLoss < 0){
       this.shiftPower(maxWinner, maxWin, maxLoser, maxLoss);
     }
+    this.getState().updateValues({"credits":1});
     this.inform();
   }
 

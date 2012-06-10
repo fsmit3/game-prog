@@ -6,4 +6,8 @@ function HumanAgent(name, img){
     //Human interaction
     requestApproval(this.getGameController(), actions);
   }
+
+  this.getDesire = function(state){
+    return new ActionNode("Pay your self a lot of money", {}, {"food":-10, "safety":-10, "credits":20});
+  }
 }

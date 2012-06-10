@@ -19,7 +19,8 @@ function Game(){
         actionTree,
         {
           "food": 1,         
-          "safety": 0
+          "safety": 0,
+          "credits":0
         },
         emotion,
         70,
