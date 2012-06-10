@@ -11,7 +11,7 @@ function ActionTree(){
 
         
     var node_12 = new ActionNode('Create more laws', {"food":100, "safety":80, "culture":100}, {'food':0, 'safety':10, 'culture':0} , _root);
-    var node_13 = new ActionNode('Build a concert hall', {"food":100, "safety":120, "culture":80},  {'food':-6, 'safety':-8, 'culture':12} , _root);
+    var node_13 = new ActionNode('Build a concert hall', {"food":90, "safety":100, "culture":70},  {'food':-6, 'safety':-8, 'culture':12} , _root);
     
     var node_4 = new ActionNode('Build more farms', {'food':65, 'safety':90, 'culture':70}, {'food': 11, 'safety':-10, 'culture': -10}, _root);
     var node_6 = new ActionNode('Build more granaries', {'food':50, 'safety':70, 'culture':80}, {'food': 10, 'safety':-5, 'culture': -7}, _root);
@@ -21,7 +21,7 @@ function ActionTree(){
     var node_15 = new ActionNode('Build more walls', {'food':160, 'safety':80, 'culture':100}, {'food': -5, 'safety':11, 'culture': -8}, _root);
     
     var node_16 = new ActionNode('Build more police schools', {'food':100, 'safety':90, 'culture':90}, {'food':-6, 'safety':5, 'culture':-10}, _root);
-    var node_17 = new ActionNode('Hire more police trainers', {'food':80, 'safety':100, 'culture':80}, {'food':-3, 'safety':5, 'culture':0}, _root);
+    var node_17 = new ActionNode('Hire more police trainers', {'food':80, 'safety':70, 'culture':60}, {'food':-3, 'safety':5, 'culture':0}, _root);
     var node_18 = new ActionNode('Create more weapons', {'food':30, 'safety':10, 'culture':20}, {'food':0, 'safety':12, 'culture':0}, _root);
     var node_19 = new ActionNode('Create more barracks', {'food':30, 'safety':30, 'culture':20}, {'food':-7, 'safety':11, 'culture': -10}, _root);
     var node_21 = new ActionNode('Train farmers to be police officers', {'food':150, 'safety':80, 'culture':70},  {'food': 17, 'safety':-5, 'culture': -5}, _root);
