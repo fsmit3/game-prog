@@ -1,0 +1,35 @@
+Food:
+Irrigate more farm land
+Build more farms
+Create more farm tools
+Build more granaries
+Build more markets
+Subsidise more farmers
+Improve farming technologies
+Train police officers to be farmers
+Transform iron tools to farm tools
+
+Safety:
+Build more walls
+Build more police schools
+Hire more police trainers
+Create more weapons
+Create more barracks
+Create more laws
+Subsidise more police officers
+Train farmers to be police officers
+Transform iron tools to weapons
+
+Culture:
+Build more sculptures
+Build more art schools
+Hire more art teachers
+Build more art galaries
+Build more museums
+Subsides more artists
+Lower prices of canvas
+Spend more on architecture
+Build a concert hall
+Transform iron tools to music instruments
+
+Health: (maybe?)
