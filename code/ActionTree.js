@@ -38,10 +38,10 @@ function ActionTree(){
         
     var node_8 = new ActionNode('Subsidize more farmers', {'food':0, 'safety':5, 'culture':5}, {'food': 5, 'safety':0, 'culture':0}, _root);
     var node_29 = new ActionNode('Lower prices of canvas', {'food':8, 'safety':10, 'culture':2}, {'food':0, 'safety':0, 'culture':5}, _root);
-    var node_20= new ActionNode('Subsidize more police officers', {'food':1, 'safety':0, 'culture':0}, {'food': -2, 'safety':20, 'culture': -5}, _root);
+    var node_20= new ActionNode('Subsidize more police officers', {'food':1, 'safety':0, 'culture':0}, {'food': -2, 'safety':4, 'culture': -5}, _root);
     var node_28 = new ActionNode('Subsides more artists', {'food':7, 'safety':4, 'culture':0}, {'food':-2, 'safety':-2, 'culture':5}, _root);
     var node_31 = new ActionNode('Transform iron tools to music instruments', {'food':1, 'safety':1, 'culture':0}, {'food':-2, 'safety':-2, 'culture':5}, _root);
-    var node_14 = new ActionNode('Transform iron tools to farm tools', {'food':0, 'safety':1, 'culture':1}, {'food': 13, 'safety':0, 'culture':0}, _root);
+    var node_14 = new ActionNode('Transform iron tools to farm tools', {'food':0, 'safety':1, 'culture':1}, {'food': 3, 'safety':0, 'culture':0}, _root);
     var node_22 = new ActionNode('Transform iron tools to weapons', {'food':1, 'safety':0, 'culture':1}, {'food':-2, 'safety':5, 'culture':0}, _root);
 
     
