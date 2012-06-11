@@ -1,0 +1,57 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\author{Frank Smit \& Sander Latour}
+\title{A game of politics}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+Introduction of the game, the story in a sense.
+\section{Game}
+\subsection{Game mechanics}
+  \begin{itemize}
+    \item The game is turn based, meaning you have plenty of time to think about the next move, and each time you select an action the other actors will respond to that.
+    \item The action space consists of the N requests of N families of which you can select one that you approve each turn. These actions have effects, both negative and positive, to several topics of the world (such as food and safety)
+    \item Each actor will respond positively or negatively depending on the effect of your action on the topics that they find important. At the end of each turn you need to satisfy at least 60\% of the people, so that means you have to focus on balancing relationships in order to make enough people happy each turn.
+    \item You can however increase the power of a specific actor by favoring him over the others, this will cause people to switch to the winning team and increase the power of the winner. The more people that are represented by one actor, the more people you can make happy by approving that actor's request.
+    \item This means there are various ways to play the game. You can try to keep almost everybody happy by giving them all what they want in turn. Or you can try to make one or more actors more powerfull and only focus on making them happy. Both methods have upsides and downsides and it depends on the player which one he chooses to achieve the best result.
+    \item The result is measured in credits. You receive a credit for each turn the people support you. You can significantly increase your credits by instead of approving one of the actor's desires decide to spend this turn by giving yourself more credits. This will however upset the actors, so it can only be successfully applied in specific cases. At the end of the game the credits that you've gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
+  \end{itemize}
+\subsection{Game situations}
+  \subsubsection{The winner takes it all}
+  \subsubsection{Revolution}
+  \subsubsection{Retirement}
+\section{Implementation details}
+  \subsection{World state}
+  Topics space
+  \subsection{Actions}
+    \subsubsection{Conditions}
+    \subsubsection{Effects}
+  \subsection{Autonomous agents}
+    \subsubsection{Emotion states}
+    \subsubsection{Preferences}
+    \subsubsection{Selecting desired action}
+  \subsection{Human agent}
+    \subsubsection{Interface}
+    Screenshot with explanation
+  \subsection{Game loop} 
+  (explain image)
+    \subsubsection{Collect desires}
+    \subsubsection{Request aproval}
+    \subsubsection{Execute action}
+    \subsubsection{Inform agents}
+\section{Conclusion}
+  \begin{itemize}
+    \item Created a serious game that simulated a part of the decision making process of leaders
+    \item Up to a certain point managed to achieve multiple winning strategies
+  \end{itemize}
+\section{Discussion}
+  \begin{itemize}
+    \item Turned out to be difficult to balance realism and what is doable in practise.
+    \item Turned out to be difficult to create good gameplay with various factors that complicate behavior (how to keep it surprising but understandable)
+    \item Turned out to be difficult to create a good story and good actions that make it more realistic and interesting.
+    \item Turned out to be difficult to create the game in such a way that it is not biased to any of the strategies
+    \item Frank, jij had toch nog iets bedacht?
+  \end{itemize}
+\end{document}
