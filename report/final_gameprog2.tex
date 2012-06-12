@@ -90,16 +90,20 @@ Music is added to the game to enhance the gaming experience. There are two diffe
       \begin{figure}[h!]
       \centering
       \includegraphics[scale=0.5]{screenshot}
-      \caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different sort of information. }
+      \caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different types of information. }
       \label{fig:scr}
       \end{figure}
-  \subsection{Game loop} 
-  (explain image)
+  \subsection{Game loop}
+    \includegraphics[scale=0.25]{gameloop.png}
+    The game controller proceeds through various phases each turn. At the end of the fourth phase the cycle starts over.
     \subsubsection{Collect desires}
+      In the first phase the game controller requests the autonomous agents to express their desired actions based on the current world state.
     \subsubsection{Request approval}
+      In the second phase the game controller communicates these desired actions to the human player and requests him to approve one of the actions.
     \subsubsection{Execute action}
+      The approved action is executed in the third phase by adding the effects of the action to the current world state.
     \subsubsection{Inform agents}
-
+      The new world state is communicated to autonomous agents in the fourth phase. Each agent in turn will update their emotional energy. 
 
 \section{Conclusion}
 A game of politics can be considered as a serious game that simulates a part of the decision making process of leaders in a small domain. 
