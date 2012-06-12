@@ -47,6 +47,23 @@ function Game(){
         100
       )
     );
+    
+    _controller.registerAgent(
+      new Agent(
+        "Green Team",
+        "primitive-man.png",
+        actionTree,
+        {
+          "food":0.7,
+          "safety":0.3,
+          "culture":0
+        },
+        emotion,
+        70,
+        20,
+        50
+      )
+    );
    
     _controller.registerHeadOfState(
       new HumanAgent("King", "")
