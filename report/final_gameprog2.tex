@@ -24,13 +24,19 @@ Introduction of the game, the story in a sense.
   \subsubsection{Retirement}
 \section{Implementation details}
   \subsection{World state}
-  Topics space
+    Actions that are performed have an effect on the world. These effects are in turn used by other agents to determine their reaction on the performed action. Since actions can have both positive and negative effects they can reverse some of the earlier actions taken in terms of the worl state. To avoid the enormous complexity of a set of boolean variables to represent the diversity of actions and cater for the reversal effect like one would in a classical STRIPS approach, we instead chose to represent the world in a $n$-dimensional space of $n$ real-valued topics. These topics represent typical themes that have been playing a role in politics for a long time. The topics that we have used for the current implementation are \emph{food}, \emph{safety} and \emph{culture}. This list is however extendable. Each world state consist of $n$ topic-value pairs representing the current state of each topic in that world state.
   \subsection{Actions}
+    Not unlike STRIPS actions consist of two parts, a condition and the effect. These two components are described in terms of the topic space as was discussed earlier.
     \subsubsection{Conditions}
+      Each action has a set of topic-value pairs that represents the minimum value that each mentioned topic must have in the world state before the action is requested. This is motivated by the following reasoning. If an agent values a specific topic it will naturally try to improve that topic as much as possible. However if the basic necessities of a topic are not arranged yet, it has no use to request higher level improvements since they typically relie on the presence of more basic improvements for their effectiveness. The topic values for consequtive actions are increasing. The condition also has the effect that when another action decreases a topic value, it might result in some agent requesting earlier actions again.
     \subsubsection{Effects}
+      Each action has a set of topic-value pairs that represents the effect it has on the world state. The values can be both positive and negative indicating positive and negative effects respectively. The new world state can be determined by simply adding each of the effect values to the current world state values.
   \subsection{Autonomous agents}
-    \subsubsection{Emotion states}
+    Most players in the game are autonomous agents that each turn determine which action they would most desire to see executed by the human player. This desire is expressed to the human player at the beginning of each turn. When a human player desides which action to execute, each autonomous agent will determine his reaction to this action. The reaction is a positive or negative change in their emotional state.
     \subsubsection{Preferences}
+      Each autonomous agent prefers improvement in some topics more than in others. It might even prefer to worsen the situation of a specific topic. This is expressed in the preferences, which is a set of topic-weight pairs where the weights adds up to 1. These weights indicate how much they value improvement on that topic.
+    \subsubsection{Emotion states}
+      Each autonomous agent has a certain amount of emotional energy. This energy is increased when the agent is more pleased. After each turn agents update their emotional energy by summing up the multiplication of the preference weights with the effects of the taken action, which results in the delta value that is added to the current emotional energy level. The continuous domain of the energy is discretized in a FSM of emotional states. The transitions in this FSM are absolute energy values that the agent must be in to switch to a different emotion state. For example, given a sufficiently large negative value an agent will transition from a neutral to an anger state. The current implementation does not use these emotion states very extensively, besides using them to make the energy values more intuitive to understand for the human player. However, they cater for complex behaviour where each agent may behave differently in a different emotion state.
     \subsubsection{Selecting desired action}
   \subsection{Human agent}
     \subsubsection{Interface}
