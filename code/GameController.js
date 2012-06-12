@@ -72,6 +72,7 @@ function GameController(){
     if(_revolution > 3){
       gameover(this.getState().getValue("credits"));
     }else if(this.getTurn() == 65){
+      this.getState().updateValues({"credits":20});
       gameover(this.getState().getValue("credits"));
     }else{
       this.incrementTurn();

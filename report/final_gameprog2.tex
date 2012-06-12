@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{article}
+\usepackage[vmargin=3cm, hmargin=3cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -9,47 +10,41 @@
 \maketitle
 
 \section{Introduction}
-This work introduces and describes the game, `a game of politics'. In this game, the player plays the lead character who invented a super computer which enables him to control the mind of a leader during the prehistoric era. During that time, the power is all divided over different families. These different families have certain ideals and will request the leader for favors which will bring them closer of achieving those. In every turn, the player is able to approve one of these requests. Each request has is own consequences (positive or negative), and will influence the relationship between the families and the leader. 
+This work introduces and describes the game, `a game of politics'. In this game, the player plays the lead character who invented a super computer which enables him to control the mind of a leader during the prehistoric era. During that time, the power is all divided over different families. These different families have certain ideals and will request the leader for favors which will bring them closer of achieving those. In every turn, the player is able to approve one of these requests. Each request has is own consequences (positive or negative), and chosen concequences will influence the relationship between the families and the leader depending on their opinion about the made decision.
 
-Credits are assigned to the player after each turn. The goal of the player is to earn as many credit as possible. The amount of credit the player receives is determined by the action he takes. This means that the player should carefully select his actions and think about the consequences it has for his own benefit.  The paper is divided as follows; in the next section the game will be described. In section 3 the implementation details will be discussed and the final sections will be for concluding and discussing this work.
+Credits are assigned to the player after each turn. The goal of the player is to earn as many credit as possible. The duration of the game in which the player recieves credits is determined by the actions he takes. Therefore the player should carefully select his actions and think about the consequences it has for his own benefit.  
 
 \section{Game}
 \subsection{Game mechanics}
-The game is a Turn-Based-Strategy (TBS) game, without any time restrictions in each turn. Thus the player has plenty of time to think about the strategy he will play. In every turn their are $N$ actions to choose from (e.g. their are $N$ families are proposing one request). These actions have effects, both negative and positive, to several topics of the world (such as food and safety).  After selecting an action, the agents will immediately react by changing his support and emotion. This will be positively if you consider the ideals of the agent and negatively otherwise. The support of the family towards the player is important to the player because after every turn, the the player needs to satisfy at least 60\% of the people. If the support is below this threshold, the people will stand up to you and will start a revolution. The player then has three turns to get the support back below the threshold else the game will be finished. 
+The game is a Turn-Based-Strategy (TBS) game, without any time restrictions in each turn. Thus the player has plenty of time to think about the strategy he will play. In every turn there are $N$ actions (from $N$ families) to choose from. These actions have effects, both negative and positive, to several topics of the world (such as food and safety).  After selecting an action, the agents will immediately react emotionally which causes change in their support. This will be positively if you protect the ideals of the agent and negatively otherwise. The support of the family is important to the player because after every turn, the the player needs to satisfy at least 60\% of the people. If the support is below this threshold, the people will stand up to you and start a revolution. The player then has three turns to get enough support before the game is finished.
 
-The way the player divides the power could be of great importance for the amount of credit the player receives. For example, the player  could  increase the power of a specific family by favoring him over the others, this will cause people to switch to the winning team and increase the power of the winner. The more people that are represented by one family, the more people you can make happy by approving that family's request. When  a family is completely satisfied with your policy, they could decide to support you unconditionally. This means that they will transfer their power to the player and will not ask for any requests anymore. This support will not be permanently, but will stop once the player disobeys the ideals of the family for a number of turns.
+When the player chooses sides and favors one action over the others there will be families that have gained and families that have lost. Since people tend to join the winning team there is a chance that some people will move from the losing family to the winning family. The more people that are represented by one family, the more people you can make happy by approving that family's request. When a family is completely satisfied with your policy, they could decide to support you unconditionally. This means that they will support you completely will not ask for any favors in return. However, they will still look over your shoulder and they still react emotionally to the actions to choose. This means that you must remember to protect the interests of the families that are not explicitely asking anything themselves, because if you don't they will loose their belief in you.
 
-This all means that there are various ways to play the game. The player could try to keep almost everybody happy by giving them all what they want in turn. Or he could try to make one or more actors more powerful and only focus on making them happy. Both methods have upsides and downsides and it depends on the player which one he chooses to achieve the best result.
+The way the player creates support greatly influences the duration of the game and the final credit score that is achieved. The player could try to make almost everybody happy by in turn approve one of their requests. This usually results in a long period of just enough support to keep playing, but tends to have less risk since nobody is really held back. The player could also slowly shift the power towards fewer families to concentrate the support by favoring them more than others. This should however not happen too quickly since the other families could then react so severly that a revolution brakes out. However, this strategy usually results in much higher support which will enable the player to favor himself over the families and buy more credits. Caution is advised though, since the families will not appreciate this. And concentrating the support also means that you can loose it more quickly.
 
-As mentioned before, the result is measured in credits. The player receives a credit for each turn the people support him. The player could significantly increase his credits by instead of approving one of the actor's desires, decide to spend this turn by giving himself more credits. This will however upset the families, meaning that it can only be successfully applied in specific cases. Once the player is game-over, the credits that were gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
-
-%  \begin{itemize}
-%    \item The game is turn based, meaning you have plenty of time to think about the next move, and each time you select an action the other actors will respond to that.
-%    \item The action space consists of the N requests of N families of which you can select one that you approve each turn. These actions have effects, both negative and positive, to several topics of the world (such as food and safety)
-%    \item Each actor will respond positively or negatively depending on the effect of your action on the topics that they find important. At the end of each turn you need to satisfy at least 60\% of the people, so that means you have to focus on balancing relationships in order to make enough people happy each turn.
-%    \item You can however increase the power of a specific actor by favoring him over the others, this will cause people to switch to the winning team and increase the power of the winner. The more people that are represented by one actor, the more people you can make happy by approving that actor's request.
-%    \item This means there are various ways to play the game. You can try to keep almost everybody happy by giving them all what they want in turn. Or you can try to make one or more actors more powerful and only focus on making them happy. Both methods have upsides and downsides and it depends on the player which one he chooses to achieve the best result.
-%    \item The result is measured in credits. You receive a credit for each turn the people support you. You can significantly increase your credits by instead of approving one of the actor's desires decide to spend this turn by giving yourself more credits. This will however upset the actors, so it can only be successfully applied in specific cases. At the end of the game the credits that you've gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
-%  \end{itemize}
+Once the player looses too much support or retires after 65 steps, the game ends and the credits that were gathered are shown. This creates a motivation to play again to improve your score. The credits metric also makes the result comparable to strategies of your friends.
 \subsection{Game situations}
 
   \subsubsection{The winner takes it all}
-Every actions in every turn leads to some families that won that round and some families that lost that round. This is determined by calculating how much, trough the families' eyes, the world was made better after selecting that action. In other words, the consequences of the action are weighted according to the ideals of a family. The family that gain the most is considered the winner and the family that gain the least is considered the loser. 
+Every actions in every turn leads to some families that won that round and some families that lost that round. This is determined by calculating how much, trough the families' eyes, the world was made better after selecting that action. In other words, the consequences of the action are weighted according to the ideals of a family. The family that gained the most is considered the winner and the family that gained the least is considered the loser. 
 
-As mentioned above, the families could become more powerful after selecting some actions. This is done using the winner and losers concept, where some amount of power from the  family that lost is transferred to the family that won. This can be seen as people renegade from one family to the other family. The amount of power that is transferred is determined by means of function \ref{func:pt}. 
-
-\begin{align}
-y
-\label{func:pt}
-\end{align}
-
-In the case of multiple winning and multiple losing families, the most powerful family that won will receive power from the most powerful family that lost. 
+As mentioned above, the families could become more powerful after selecting some actions. This is done using the winner and losers concept, where some amount of power from the  family that lost is transferred to the family that won. This can be seen as people renegade from one family to the other family. The amount of power that is transferred is determined by following this list of steps.
+\begin{enumerate}
+  \item Let $r$ denote a random number between 0 and 1.
+  \item Let $c_s$ denote a shifting constant describing the rate of power change (in the implementation this is set to 0.1)
+  \item Let $\delta_w$ denote the weighted gain the winner has achieved.
+  \item Let $\delta_l$ denote the weighted loss the loser has achieved.
+  \item Let $P_w$ denote the amount of power (i.e. amount of people) of the winning family.
+  \item Ley $P_l$ denote the amount of power of the losing family.
+  \item Let $p$ denote $\frac{(100 - \lvert P_w - P_l \rvert)}{100}$
+  \item Return $r c_s p \lvert \delta_l - \delta_w \rvert$
+\end{enumerate}
 
 \subsubsection{Revolution}
-As shortly mentioned before, once the player does not get the 60\% support that is necessary , the families will start a revolution. The player then has three turns to get back the 60\% support that he needs, else the game will be finished. In this situation the families are angry and therefore will ask more of the player then usual. This will make it more difficult, but not impossible, for the player to take everyone's ideals in consideration. The player really has to think of his strategy to avoid losing the game.
+When the player has less than 60\% of the support, a revolution brakes out. This means that the people grant the player with three turns to rewin their support. If at the end of those three turns the support is still too low, the player has to resign and the game ends. Thoughts have arose to make the families desire more during the revolution due to their unhappiness, but this was not included in the final implementation.
 
 \subsubsection{Retirement}
-After 67 turns, the leader will decide to retire from his function. Once this happens the player have lead the leader to a successful reign and will be rewarded for his service record. This reward will be in terms of extra credits. 
+After 65 turns, the leader will decide to retire from his function. Once this happens the player has lead the leader to a successful reign and will be rewarded for his service record. This reward will be in terms of extra credits. 
 
 \subsection{Music}
 Music is added to the game to enhance the gaming experience. There are two different states in the game that alters the music. The first one is the normal situation where the player is just picking actions and the agents are reacting to the actions. The second one is when the support is below the threshold of 60\%, i.e. when the revolution starts. The music then is changed to a more tension increasing piece of music. This will create more excitement for the player, knowing that he will need to watch his steps. 
@@ -87,14 +82,14 @@ Music is added to the game to enhance the gaming experience. There are two diffe
 
       In the small area left below in the screen, the game information is presented to the player. Here information such as, in which turn the player is, how much credits it received so far, and how much support the player has from the agents. This information will be updated after every turn. In the small area in the right corner below, the world state is presented to the player. This shows the current values of the topics that together form the world state. These topics are the same as the consequences of each action. 
 
-      \begin{figure}[h!]
+      \begin{figure}[t]
       \centering
       \includegraphics[scale=0.5]{screenshot}
       \caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different types of information. }
       \label{fig:scr}
       \end{figure}
   \subsection{Game loop}
-    \includegraphics[scale=0.25]{gameloop.png}
+    \includegraphics[scale=0.25]{gameloop.png}\\
     The game controller proceeds through various phases each turn. At the end of the fourth phase the cycle starts over.
     \subsubsection{Collect desires}
       In the first phase the game controller requests the autonomous agents to express their desired actions based on the current world state.
@@ -106,28 +101,16 @@ Music is added to the game to enhance the gaming experience. There are two diffe
       The new world state is communicated to autonomous agents in the fourth phase. Each agent in turn will update their emotional energy. 
 
 \section{Conclusion}
-A game of politics can be considered as a serious game that simulates a part of the decision making process of leaders in a small domain. 
+A game of politics can be considered as a serious game that simulates a part of the decision making process of leaders in a small domain. Multiple strategies can be executed to reach the goal, although it is not clear whether all strategies have equal chances. The counter players are autonomous agents that respond to the actions of the human player. The gathering of credits and the situation-dependant music create a more engaging game experience.
 
- 
-  \begin{itemize}
-    \item Created a serious game that simulated a part of the decision making process of leaders
-    \item Up to a certain point managed to achieve multiple winning strategies
-  \end{itemize}
-  
-\section{Discussion}
-Creating a good game with a good gameplay is a very difficult task. We have learned a lot building this game and thinking about how the game should develop in certain circumstances. For example, it is very hard to balance realism of the game with what can be created in practice. We could, for example, create a whole economy which is also influenced by decision that the player makes. However, modeling a whole economy is very difficult, as a developer you really have to think about all the aspects that play a role in a economy. We could think of many examples of this sort. 
+\section{Reflection}
+Creating a good game with a good gameplay is a very difficult task. We have learned a lot from building this game and thinking about how the game should develop in certain circumstances. For example, it turned out to be very hard to balance the realism of the game with what can be created in practice. We wanted, for example, to create a whole economy which is influenced by decisions that the player makes, but at the same time limits the possibilities of the player. However, modeling the economy was much too complex for both the developers as for the human player to understand how to deal with that. During the development of this game, various dillemas focused on realism were encountered. 
 
-Of course we wanted to create a good gameplay where the agents were very intelligent. So we thought about various factors of complicate behavior a lot. The interesting part of course is how to create very intelligent agent but still keep them understandable and \textit{sometimes} predictable. We have learned a lot thinking about all the AI techniques, such as GOAP, STRIPS, behavioral trees, etc, that we could maybe use to create as intelligent behavior as possible. Eventually we took a more computer science approach which still lead to intelligent behavior.
+We aimed for good gameplay with very intelligent agents, so we thought about various factors to (give the impression of) complex behavior. The difficult part however is to create such intelligent agents and still keep them understandable for the player. Modelling an autonomous agent is fun, if and only if you have a good change of succeeding in that. We considered quite a lot of AI techniques and data representations to achieve this, such as GOAP, STRIPS, behavioral trees, etc. Eventually we took a slightly more computer science approach which still lead to the impression of intelligent behavior, without some of the enormous engineering tasks of creating action ontologies in order to make it realistic.
 
-We have also learned that the story is maybe the most important part of the game. We thought about how we should present the story to the user., when is not interesting anymore, and how could we alter the story in such a way that the actions has immediate consequences to the world (e.g. you do not want to wait 10 minutes before the action's consequences become apparent ).
+It also became clear that the story element in a game is an important factor. It also appeared to be non-trivial to construct that story around all the game elements that were designed during brainstorm sessions. Especially when combining this with the point about realism.
 
-We did not want the game to be very simple and that one strategy would outperform other strategies. Therefore we really had to think about how to make the game interesting for different strategies, and how we could alter the gameplay such that this was the case. 
-%
-%  \begin{itemize}
-%    \item Turned out to be difficult to balance realism and what is doable in practise.
-%    \item Turned out to be difficult to create good gameplay with various factors that complicate behavior (how to keep it surprising but understandable)
-%    \item Turned out to be difficult to create a good story and good actions that make it more realistic and interesting.
-%    \item Turned out to be difficult to create the game in such a way that it is not biased to any of the strategies
-%    \item Frank, jij had toch nog iets bedacht?
-%  \end{itemize}
+We did not want the game to be very straightforward or that one strategy would outperform other strategies. Therefore we really had to think about how to make the game interesting for different strategies, and how we could alter the gameplay such that this was the case.
+
+In the end we managed to create a working and partially engaging game, but quite some obstacles had to be dealt with in the process.
 \end{document}
