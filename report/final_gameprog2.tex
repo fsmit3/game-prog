@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \author{Frank Smit \& Sander Latour}
 \title{A game of politics}
 \begin{document}
@@ -9,12 +10,20 @@
 \section{Introduction}
 This work introduces and describes the game, `a game of politics'. In this game, the player plays the lead character who invented a super computer which enables him to control the mind of a leader during the prehistoric era. During that time, the power is all divided over different families. These different families have certain ideals and will request the leader for favors which will bring them closer of achieving those. In every turn, the player is able to approve one of these requests. Each request has is own consequences (positive or negative), and will influence the relationship between the families and the leader. 
 
-Credits are assigned to the player after every turn. The goal of the player is to earn as many credit as possible. The amount of credit the player receives is determined by the action he takes. This means that the player should carefully select his actions and think about the consequences it has for his own benefit. 
+Credits are assigned to the player after each turn. The goal of the player is to earn as many credit as possible. The amount of credit the player receives is determined by the action he takes. This means that the player should carefully select his actions and think about the consequences it has for his own benefit. 
 
 This paper is divided as follows; in the next section the game will be described. In section 3 the implementation details will be discussed and the final sections will be for concluding and discussing this work.
 
 \section{Game}
 \subsection{Game mechanics}
+The game is a Turn-Based-Strategy (TBS) game, without any time restrictions in each turn. Thus the player has plenty of time to think about the strategy he will play. In every turn their are $N$ actions to choose from (e.g. their are $N$ families are proposing one request). These actions have effects, both negative and positive, to several topics of the world (such as food and safety).  After selecting an action, the agents will immediately react by changing his support and emotion. This will be positively if you consider the ideals of the agent and negatively otherwise. The support of the family towards the player is important to the player because after every turn, the the player needs to satisfy at least 60\% of the people. If the support is below this threshold, the people will stand up to you and will start a revolution. The player then has three turns to get the support back below the threshold else the game will be finished. 
+
+The way the player divides the power could be of great importance for the amount of credit the player receives. For example, the player  could  increase the power of a specific family by favoring him over the others, this will cause people to switch to the winning team and increase the power of the winner. The more people that are represented by one family, the more people you can make happy by approving that family's request. When  a family is completely satisfied with your policy, they could decide to support you unconditionally. This means that they will transfer their power to the player and will not ask for any requests anymore. This support will not be permanently, but will stop once the player disobeys the ideals of the family for a number of turns.
+
+This all means that there are various ways to play the game. The player could try to keep almost everybody happy by giving them all what they want in turn. Or he could try to make one or more actors more powerful and only focus on making them happy. Both methods have upsides and downsides and it depends on the player which one he chooses to achieve the best result.
+
+As mentioned before, the result is measured in credits. The player receives a credit for each turn the people support him. The player could significantly increase his credits by instead of approving one of the actor's desires, decide to spend this turn by giving himself more credits. This will however upset the families, meaning that it can only be successfully applied in specific cases. Once the player is game-over, the credits that were gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
+
   \begin{itemize}
     \item The game is turn based, meaning you have plenty of time to think about the next move, and each time you select an action the other actors will respond to that.
     \item The action space consists of the N requests of N families of which you can select one that you approve each turn. These actions have effects, both negative and positive, to several topics of the world (such as food and safety)
@@ -26,6 +35,17 @@ This paper is divided as follows; in the next section the game will be described
 \subsection{Game situations}
 
   \subsubsection{The winner takes it all}
+Every actions in every turn leads to some families that won that round and some families that lost that round. This is determined by calculating how much, trough the families' eyes, the world was made better after selecting that action. In other words, the consequences of the action are weighted according to the ideals of a family. The family that gain the most is considered the winner and the family that gain the least is considered the loser. 
+
+As mentioned above, the families could become more powerful after selecting some actions. This is done using the winner and losers concept, where some amount of power from the  family that lost is transferred to the family that won. This can be seen as people renegade from one family to the other family. The amount of power that is transferred is determined by means of function \ref{func:pt}. 
+
+\begin{align}
+y
+\label{func:pt}
+\end{align}
+
+In the case of multiple winning and multiple losing families, the most powerful family that won will receive power from the most powerful family that lost. 
+
   \subsubsection{Revolution}
   \subsubsection{Retirement}
   
