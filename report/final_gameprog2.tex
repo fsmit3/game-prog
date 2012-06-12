@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\operatorname{max}}\;}
 \author{Frank Smit \& Sander Latour}
 \title{A game of politics}
 \begin{document}
@@ -64,27 +65,34 @@ Music is added to the game to enhance the gaming experience. There are two diffe
       Each action has a set of topic-value pairs that represents the effect it has on the world state. The values can be both positive and negative indicating positive and negative effects respectively. The new world state can be determined by simply adding each of the effect values to the current world state values.
   \subsection{Autonomous agents}
     Most players in the game are autonomous agents that each turn determine which action they would most desire to see executed by the human player. This desire is expressed to the human player at the beginning of each turn. When a human player decides which action to execute, each autonomous agent will determine his reaction to this action. The reaction is a positive or negative change in their emotional state.
+    \subsubsection{Selecting desired action}
+      Each agent selects their next desired action according to the following list of steps.
+      \begin{enumerate}
+        \item Let $\vec{s}$ denote a real-valued vector, where each element denotes the value of a topic in the current world state.
+        \item Let $a$ denote an action, consisting of a condition component denoted as $a_C$ and an effect component denoted as $a_E$.
+        \item Let $\mathcal{A}$ denote the set of all actions, such that for each valid action $a$ it holds that $a \in \mathcal{A}$.
+        \item Let \textsc{Performable}($a_C$,$\vec{s}$) denote a boolean function that returns true when every condition in $a_C$ is met in world state $\vec{s}$.
+        \item Let $\mathcal{P}$ denote the set \{\textsc{Performable}($x$)$\vert x \in \mathcal{A}$\}.
+        \item Let $\vec{w}$ denote a real-valued vector, where each element denotes the weight of a topic in the world state indicating the preference of the agent.
+
+        \item Return $\argmax{a \in \mathcal{P}} \left[ a_E \cdot \vec{w} \right]$.
+      \end{enumerate}
     \subsubsection{Preferences}
       Each autonomous agent prefers improvement in some topics more than in others. It might even prefer to worsen the situation of a specific topic. This is expressed in the preferences, which is a set of topic-weight pairs where the weights adds up to 1. These weights indicate how much they value improvement on that topic.
     \subsubsection{Emotion states}
       Each autonomous agent has a certain amount of emotional energy. This energy is increased when the agent is more pleased. After each turn agents update their emotional energy by summing up the multiplication of the preference weights with the effects of the taken action, which results in the delta value that is added to the current emotional energy level. The continuous domain of the energy is discretized in a FSM of emotional states. The transitions in this FSM are absolute energy values that the agent must be in to switch to a different emotion state. For example, given a sufficiently large negative value an agent will transition from a neutral to an anger state. The current implementation does not use these emotion states very extensively, besides using them to make the energy values more intuitive to understand for the human player. However, they cater for complex behaviour where each agent may behave differently in a different emotion state.
-    \subsubsection{Selecting desired action}
   \subsection{Human agent}
     \subsubsection{Interface}
+      The interface of the game, as shown by figure \ref{fig:scr}, is extremely simple and intuitive. Because the story of the game allows the player to play as a scientist who created a super computer, the only screen the player will look at is a computer screen. This screen contains three areas. The first area is the largest one, where the agents together with their request and the consequences are presented. At each line the player has the ability to press the `Approve request' button. This button represents the action the player could take. 
 
-The interface of the game, as shown by figure \ref{fig:scr}, is extremely simple and intuitive. Because the story of the game allows the player to play as a scientist who created a super computer, the only screen the player will look at is a computer screen. This screen contains three areas. The first area is the largest one, where the agents together with their request and the consequences are presented. At each line the player has the ability to press the `Approve request' button. This button represents the action the player could take. 
+      In the small area left below in the screen, the game information is presented to the player. Here information such as, in which turn the player is, how much credits it received so far, and how much support the player has from the agents. This information will be updated after every turn. In the small area in the right corner below, the world state is presented to the player. This shows the current values of the topics that together form the world state. These topics are the same as the consequences of each action. 
 
-In the small area left below in the screen, the game information is presented to the player. Here information such as, in which turn the player is, how much credits it received so far, and how much support the player has from the agents. This information will be updated after every turn. In the small area in the right corner below, the world state is presented to the player. This shows the current values of the topics that together form the world state. These topics are the same as the consequences of each action. 
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{screenshot}
-\caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different sort of information. }
-\label{fig:scr}
-\end{figure}
-
-
-
+      \begin{figure}[h!]
+      \centering
+      \includegraphics[scale=0.5]{screenshot}
+      \caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different sort of information. }
+      \label{fig:scr}
+      \end{figure}
   \subsection{Game loop} 
   (explain image)
     \subsubsection{Collect desires}
