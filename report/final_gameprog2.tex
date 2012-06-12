@@ -10,9 +10,7 @@
 \section{Introduction}
 This work introduces and describes the game, `a game of politics'. In this game, the player plays the lead character who invented a super computer which enables him to control the mind of a leader during the prehistoric era. During that time, the power is all divided over different families. These different families have certain ideals and will request the leader for favors which will bring them closer of achieving those. In every turn, the player is able to approve one of these requests. Each request has is own consequences (positive or negative), and will influence the relationship between the families and the leader. 
 
-Credits are assigned to the player after each turn. The goal of the player is to earn as many credit as possible. The amount of credit the player receives is determined by the action he takes. This means that the player should carefully select his actions and think about the consequences it has for his own benefit. 
-
-This paper is divided as follows; in the next section the game will be described. In section 3 the implementation details will be discussed and the final sections will be for concluding and discussing this work.
+Credits are assigned to the player after each turn. The goal of the player is to earn as many credit as possible. The amount of credit the player receives is determined by the action he takes. This means that the player should carefully select his actions and think about the consequences it has for his own benefit.  The paper is divided as follows; in the next section the game will be described. In section 3 the implementation details will be discussed and the final sections will be for concluding and discussing this work.
 
 \section{Game}
 \subsection{Game mechanics}
@@ -52,6 +50,8 @@ As shortly mentioned before, once the player does not get the 60\% support that 
 \subsubsection{Retirement}
 After 67 turns, the leader will decide to retire from his function. Once this happens the player have lead the leader to a successful reign and will be rewarded for his service record. This reward will be in terms of extra credits. 
 
+\subsection{Music}
+Music is added to the game to a enhance the gaming experience. There are two different states in the game that alters the music. The first one is the normal situation where the player is just picking actions and the agents are reacting to the actions. The second one is when the support is below the threshold of 60\%, i.e. when the revolution starts. The music then is changed to a more tension increasing piece of music. This will create more excitement for the player, knowing that he will need to watch his steps. 
 
 \section{Implementation details}
   \subsection{World state}
@@ -79,7 +79,7 @@ In the small area left below in the screen, the game information is presented to
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{screenshot}
-\caption{This is a screenshot}
+\caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different sort of information. }
 \label{fig:scr}
 \end{figure}
 
@@ -88,16 +88,20 @@ In the small area left below in the screen, the game information is presented to
   \subsection{Game loop} 
   (explain image)
     \subsubsection{Collect desires}
-    \subsubsection{Request aproval}
+    \subsubsection{Request approval}
     \subsubsection{Execute action}
     \subsubsection{Inform agents}
 
 
 \section{Conclusion}
+A game of politics can be considered as a serious game that simulates a part of the decision making process of leaders in a small domain. 
+
+ 
   \begin{itemize}
     \item Created a serious game that simulated a part of the decision making process of leaders
     \item Up to a certain point managed to achieve multiple winning strategies
   \end{itemize}
+  
 \section{Discussion}
   \begin{itemize}
     \item Turned out to be difficult to balance realism and what is doable in practise.
