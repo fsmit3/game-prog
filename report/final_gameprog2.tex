@@ -24,14 +24,14 @@ This all means that there are various ways to play the game. The player could tr
 
 As mentioned before, the result is measured in credits. The player receives a credit for each turn the people support him. The player could significantly increase his credits by instead of approving one of the actor's desires, decide to spend this turn by giving himself more credits. This will however upset the families, meaning that it can only be successfully applied in specific cases. Once the player is game-over, the credits that were gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
 
-  \begin{itemize}
-    \item The game is turn based, meaning you have plenty of time to think about the next move, and each time you select an action the other actors will respond to that.
-    \item The action space consists of the N requests of N families of which you can select one that you approve each turn. These actions have effects, both negative and positive, to several topics of the world (such as food and safety)
-    \item Each actor will respond positively or negatively depending on the effect of your action on the topics that they find important. At the end of each turn you need to satisfy at least 60\% of the people, so that means you have to focus on balancing relationships in order to make enough people happy each turn.
-    \item You can however increase the power of a specific actor by favoring him over the others, this will cause people to switch to the winning team and increase the power of the winner. The more people that are represented by one actor, the more people you can make happy by approving that actor's request.
-    \item This means there are various ways to play the game. You can try to keep almost everybody happy by giving them all what they want in turn. Or you can try to make one or more actors more powerful and only focus on making them happy. Both methods have upsides and downsides and it depends on the player which one he chooses to achieve the best result.
-    \item The result is measured in credits. You receive a credit for each turn the people support you. You can significantly increase your credits by instead of approving one of the actor's desires decide to spend this turn by giving yourself more credits. This will however upset the actors, so it can only be successfully applied in specific cases. At the end of the game the credits that you've gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
-  \end{itemize}
+%  \begin{itemize}
+%    \item The game is turn based, meaning you have plenty of time to think about the next move, and each time you select an action the other actors will respond to that.
+%    \item The action space consists of the N requests of N families of which you can select one that you approve each turn. These actions have effects, both negative and positive, to several topics of the world (such as food and safety)
+%    \item Each actor will respond positively or negatively depending on the effect of your action on the topics that they find important. At the end of each turn you need to satisfy at least 60\% of the people, so that means you have to focus on balancing relationships in order to make enough people happy each turn.
+%    \item You can however increase the power of a specific actor by favoring him over the others, this will cause people to switch to the winning team and increase the power of the winner. The more people that are represented by one actor, the more people you can make happy by approving that actor's request.
+%    \item This means there are various ways to play the game. You can try to keep almost everybody happy by giving them all what they want in turn. Or you can try to make one or more actors more powerful and only focus on making them happy. Both methods have upsides and downsides and it depends on the player which one he chooses to achieve the best result.
+%    \item The result is measured in credits. You receive a credit for each turn the people support you. You can significantly increase your credits by instead of approving one of the actor's desires decide to spend this turn by giving yourself more credits. This will however upset the actors, so it can only be successfully applied in specific cases. At the end of the game the credits that you've gathered are shown. This creates a motivation to play again to improve your score, and the credits metric also makes the result comparable to strategies of your friends.
+%  \end{itemize}
 \subsection{Game situations}
 
   \subsubsection{The winner takes it all}
@@ -46,9 +46,12 @@ y
 
 In the case of multiple winning and multiple losing families, the most powerful family that won will receive power from the most powerful family that lost. 
 
-  \subsubsection{Revolution}
-  \subsubsection{Retirement}
-  
+\subsubsection{Revolution}
+As shortly mentioned before, once the player does not get the 60\% support that is necessary , the families will start a revolution. The player then has three turns to get back the 60\% support that he needs, else the game will be finished. In this situation the families are angry and therefore will ask more of the player then usual. This will make it more difficult, but not impossible, for the player to take everyone's ideals in consideration. The player really has to think of his strategy to avoid losing the game.
+
+\subsubsection{Retirement}
+After 67 turns, the leader will decide to retire from his function. Once this happens the player have lead the leader to a successful reign and will be rewarded for his service record. This reward will be in terms of extra credits. 
+
 
 \section{Implementation details}
   \subsection{World state}
