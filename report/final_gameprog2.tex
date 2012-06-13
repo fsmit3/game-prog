@@ -75,11 +75,18 @@ Music is added to the game to enhance the gaming experience. There are two diffe
     \subsubsection{Preferences}
       Each autonomous agent prefers improvement in some topics more than in others. It might even prefer to worsen the situation of a specific topic. This is expressed in the preferences, which is a set of topic-weight pairs where the weights adds up to 1. These weights indicate how much they value improvement on that topic.
     \subsubsection{Emotion states}
-      Each autonomous agent has a certain amount of emotional energy. This energy is increased when the agent is more pleased. After each turn agents update their emotional energy by summing up the multiplication of the preference weights with the effects of the taken action, which results in the delta value that is added to the current emotional energy level. The continuous domain of the energy is discretized in a FSM of emotional states. The transitions in this FSM are absolute energy values that the agent must be in to switch to a different emotion state. For example, given a sufficiently large negative value an agent will transition from a neutral to an anger state. The current implementation does not use these emotion states very extensively, besides using them to make the energy values more intuitive to understand for the human player. However, they cater for complex behavior where each agent may behave differently in a different emotion state.
+    \begin{figure}
+\centering
+\includegraphics[scale=0.25]{States-image}
+\caption{The emotional states.}
+\label{fig:es}
+\end{figure}
+      Each autonomous agent has a certain amount of emotional energy. This energy is increased when the agent is more pleased. After each turn agents update their emotional energy by summing up the multiplication of the preference weights with the effects of the taken action, which results in the delta value that is added to the current emotional energy level. The continuous domain of the energy is discretized in a FSM of emotional states shown in figure \ref{fig:es}. The transitions in this FSM are absolute energy values that the agent must be in to switch to a different emotion state. For example, given a sufficiently large negative value an agent will transition from a neutral to an anger state. The current implementation does not use these emotion states very extensively, besides using them to make the energy values more intuitive to understand for the human player. However, they cater for complex behavior where each agent may behave differently in a different emotion state.
+
   \subsection{Human agent}
-        \begin{figure}[t]
+        \begin{figure}[h!]
       \centering
-      \includegraphics[scale=0.5]{screenshot}
+      \includegraphics[scale=0.45]{screenshot}
       \caption{A screenshot of the game. The interface is simple and intuitive, having different screens containing different types of information. }
       \label{fig:scr}
       \end{figure}
