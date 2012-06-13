@@ -26,7 +26,7 @@ function Game(){
         },
         emotion,
         70,
-        50,
+        33,
         20
       )
     );
@@ -43,7 +43,7 @@ function Game(){
         },
         emotion,
         70,
-        50,
+        33,
         100
       )
     );
@@ -60,7 +60,7 @@ function Game(){
         },
         emotion,
         70,
-        20,
+        33,
         50
       )
     );
