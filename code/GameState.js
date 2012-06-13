@@ -6,6 +6,7 @@ function GameState(values){
     for(var key in values){
       if( key in _values ){
         _values[key] += values[key];
+        _values[key] = (_values[key]>=0?_values[key]:0);
       }
     }
   }
